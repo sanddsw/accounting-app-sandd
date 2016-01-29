@@ -1,0 +1,11 @@
+body {
+  font-family: 'Montserrat', sans-serif;
+  padding: 0;
+  overflow: hidden;
+}
+
+[ng-view] {
+  height: 100%;
+  width: 100%;
+}
+

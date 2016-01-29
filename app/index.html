@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <!-- build:css(.) styles/vendor.css -->
+  <!-- bower:css -->
+  <link rel="stylesheet" href="bower_components/foundation-apps/dist/css/foundation-apps.css" />
+  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
+  <link rel="stylesheet" href="bower_components/foundation-sites/dist/foundation.css" />
+  <!-- endbower -->
+  <!-- endbuild -->
+  <!-- build:css(.tmp) styles/main.css -->
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700|Oswald:400,700|Titillium+Web:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/ssw.css">
+  <link rel="stylesheet" href="styles/add.css">
+  <link rel="stylesheet" href="styles/vendor.css">
+  <!-- endbuild -->
+</head>
+<body ng-app="facturiSswApp">
+<!--[if lte IE 8]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<div class="top-bar">
+  <div class="top-bar-left">
+    <ul class="dropdown menu" data-dropdown-menu>
+      <li class="menu-text">SandD Soft Works</li>
+      <li>
+        <a href="#">Facturi</a>
+        <ul class="menu vertical">
+          <li><a href="#/Adauga">Adauga</a></li>
+          <li><a href="#/Facturi">Lista</a></li>
+        </ul>
+      </li>
+      <li><a href="#/Bill">Dorutzu</a></li>
+      <li><a href="">Caputzu</a></li>
+    </ul>
+  </div>
+  <div class="top-bar-right">
+    <ul class="menu">
+      <li><input type="search" placeholder="Search"></li>
+      <li><button type="button" class="button">Search</button></li>
+    </ul>
+  </div>
+</div>
+<!--<div class="dark title-bar">-->
+  <!--<span class="title center"><a href="#/">SandD Soft Works</a></span>-->
+      <!--<span class="right">-->
+        <!--<a href=""><i class="fa fa-list"></i></a>-->
+        <!--Facturi-->
+        <!--<a href=""><i class="fa fa-plus"></i></a>-->
+      <!--</span>-->
+<!--</div>-->
+
+
+<div ng-view></div>
+
+<div class="footer">
+  <div class="grid-frame">
+    <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
+  </div>
+</div>
+
+
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+<script>
+  !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+      (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
+    r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
+  }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-XXXXX-X');
+  ga('send', 'pageview');
+</script>
+
+<!-- build:js(.) scripts/vendor.js -->
+<!-- bower:js -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-touch/angular-touch.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/viewport-units-buggyfill/viewport-units-buggyfill.js"></script>
+<script src="bower_components/viewport-units-buggyfill/viewport-units-buggyfill.hacks.js"></script>
+<script src="bower_components/tether/tether.js"></script>
+<script src="bower_components/fastclick/lib/fastclick.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/hammerjs/hammer.js"></script>
+<script src="bower_components/foundation-apps/dist/js/foundation-apps.js"></script>
+<script src="bower_components/foundation-apps/dist/js/foundation-apps-templates.js"></script>
+<script src="bower_components/what-input/what-input.js"></script>
+<script src="bower_components/foundation-sites/dist/foundation.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js({.tmp,app}) scripts/scripts.js -->
+<script src="scripts/app.js"></script>
+<script src="scripts/controllers/main.js"></script>
+<script src="scripts/controllers/list.js"></script>
+<script src="scripts/controllers/add.js"></script>
+<script src="scripts/controllers/bill.js"></script>
+<script>
+  $(document.body).foundation();
+</script>
+<!-- endbuild -->
+</body>
+</html>

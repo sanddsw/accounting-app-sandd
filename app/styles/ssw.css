@@ -1,0 +1,190 @@
+#factura {
+}
+#factura .sus {
+  position: relative;
+  height: 35%;
+  padding: 1rem 4rem 0;
+  background: rgb(240, 244, 247);
+}
+#factura .sus .pane {
+  width: 100%;
+}
+.pane.details {
+  height: 25%;
+  display: -webkit-box;
+  position: relative;
+}
+.pane.logo {
+  height: 25%;
+  padding: 1rem;
+}
+.pane.logo img {
+  height: 100%;
+}
+.pane.firms {
+  height: 50%;
+  display: -webkit-box;
+  position: relative;
+}
+.sus .float {
+  width: 3%;
+  position: absolute;
+  left: 0;
+  height: 1px;
+  background: rgb(48, 55, 64);
+}
+.sus .float.top {
+  top: 28%;
+}
+.sus .float.btm {
+  top: 72%;
+}
+.pane.firms .furnizor, .pane.firms .cumparator {
+  padding-top: 1rem;
+  width: 50%;
+}
+.pane.firms div .head {
+  padding-bottom: 0.5rem;
+  width: 100%;
+  font-size: 1rem;
+  color: #aaa;
+}
+.pane.firms .cumparator .head {
+  text-align: right;
+}
+.pane.firms div p small{
+  color: #999;
+  padding-right: 1em;
+}
+.pane.firms div p {
+  font-size: 8px;
+  font-weight: bold;
+  color: rgb(48, 55, 64);
+  margin: 0;
+  width: 60%;
+  text-align: right;
+}
+.pane.details .left{
+  width: 55%;
+}
+.pane.details .right {
+  background: rgb(48, 55, 64);
+  color: whitesmoke;
+  position: relative;
+  width: 45%;
+}
+.pane.details .right .total {
+  position: absolute;
+  top: 0.5em;
+  left: 1em;
+  letter-spacing: 1px;
+  font-size: 0.6em;
+}
+.pane.details .right .worth {
+  position: absolute;
+  right: 0.5em;
+  top: calc(100% + 3rem);
+  font-size: 2rem;
+}
+.pane.details div p {
+  font-size: 1rem;
+  font-weight: bold;
+  color: rgb(48, 55, 64);
+  margin: 0;
+  text-align: left;
+  padding: 0 1em;
+}
+.pane.details div .title {
+  font-size: 1.25em;
+}
+.pane.details div p small {
+  margin-top: 1px;
+  color: #999;
+  padding: 0 1.25em;
+}
+.pane.firms div p small {
+  float: left;
+}
+.pane.firms .cumparator p {
+  margin-left: 40%;
+}
+#factura .table {
+  height: 45%;
+}
+#factura .table .tab {
+  height: 3rem;
+  padding: 0 4rem;
+  background: rgb(241, 244, 247);
+  display: -webkit-box;
+}
+#factura .table .tab div {
+  border-left: 3px solid white;
+  font-size: 0.5rem;
+  padding: 1rem 0;
+  height: 100%;
+  text-align: center;
+}
+#factura .table .tab div:first-child {
+  text-align: left;
+  border-left: none;
+}
+#factura .table .tab div:last-child, .jos .prod-row div {
+  text-align: right;
+}
+#factura .table .prod-row {
+  padding: 1rem 4rem;
+  display: -webkit-box;
+  border-bottom: 1px dotted #ccc;
+  font-size: 10px;
+}
+#factura .table .prod-row .name {
+  width: 55%;
+  text-align: left;
+}
+#factura .table .prod-row .name p {
+  margin: 0;
+}
+#factura .table .prod-row div:last-child {
+  text-align: right;
+}
+#factura .table .prod-row .name .title {
+  color: rgb(48, 55, 64);
+}
+#factura .table .prod-row .name .desc {
+  font-size: 7px;
+  color: #aaa;
+}
+.jos {
+  height: 20%;
+}
+.jos .foot {
+  margin: 2rem 4rem;
+  display: -webkit-box;
+  height: 5rem;
+}
+.jos .foot div {
+  height: 100%;
+}
+.jos .foot .left {
+  background: rgb(241, 244, 247);
+  width: 65%;
+}
+.jos .foot .right {
+  background: rgb(48, 55, 64);
+  width: 35%;
+}
+div[size="A4"] {
+  background: white;
+  width: 21cm;
+  height: 29.7cm;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 0.5cm;
+  box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+}
+@media print {
+  body, div[size="A4"] {
+    margin: 0;
+    box-shadow: 0;
+  }
+}

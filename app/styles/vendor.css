@@ -1,0 +1,13 @@
+.block-list {
+  margin: 0;
+}
+.top-bar, .top-bar ul, .top-bar a {
+  background: rgb(48, 55, 64);
+  color: white;
+  border-color: rgb(40, 47, 56);
+}
+.top-bar ul {
+  -webkit-box-shadow: 3px 3px 10px 0px rgba(48, 55, 64,0.75);
+  -moz-box-shadow: 3px 3px 10px 0px rgba(48, 55, 64,0.75);
+  box-shadow: 3px 3px 10px 0px rgba(48, 55, 64,0.75);
+}

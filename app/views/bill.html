@@ -1,0 +1,86 @@
+<div id="factura" size="A4">
+  <div class="sus">
+    <span class="float top"></span>
+    <span class="float btm"></span>
+    <div class="pane logo">
+      <img src="images/logo.png">
+    </div>
+    <div class="pane firms">
+      <div class="furnizor">
+        <div class="head">
+          {{f.int8n.furnizor}}
+        </div>
+        <p><small>{{f.int8n.name}}</small>{{f.bill.seller.name}}</p>
+        <p><small>{{f.int8n.cif}}</small>{{f.bill.seller.cif}}</p>
+        <p><small>{{f.int8n.orc}}</small>{{f.bill.seller.orc}}</p>
+        <p><small>{{f.int8n.sediu}}</small>{{f.bill.seller.sediu}}</p>
+        <p><small>{{f.int8n.oras}}</small>{{f.bill.seller.oras}}</p>
+        <p><small>{{f.int8n.judet}}</small>{{f.bill.seller.judet}}</p>
+        <p><small>{{f.int8n.tara}}</small>{{f.bill.seller.tara}}</p>
+        <p><small>{{f.int8n.banca}}</small>{{f.bill.seller.banca}}</p>
+        <p><small>{{f.int8n.cont}}</small>{{f.bill.seller.cont}}</p>
+      </div>
+      <div class="cumparator">
+        <div class="head">
+          {{f.int8n.cumparator}}
+        </div>
+        <p><small>{{f.int8n.name}}</small>{{f.bill.buyer.name}}</p>
+        <p><small>{{f.int8n.cif}}</small>{{f.bill.buyer.cif}}</p>
+        <p><small>{{f.int8n.orc}}</small>{{f.bill.buyer.orc}}</p>
+        <p><small>{{f.int8n.sediu}}</small>{{f.bill.buyer.sediu}}</p>
+        <p><small>{{f.int8n.oras}}</small>{{f.bill.buyer.oras}}</p>
+        <p><small>{{f.int8n.judet}}</small>{{f.bill.buyer.judet}}</p>
+        <p><small>{{f.int8n.tara}}</small>{{f.bill.buyer.tara}}</p>
+        <p><small>{{f.int8n.banca}}</small>{{f.bill.buyer.banca}}</p>
+        <p><small>{{f.int8n.cont}}</small>{{f.bill.buyer.cont}}</p>
+      </div>
+    </div>
+    <div class="pane details">
+      <div class="left">
+        <p class="title">
+          {{f.int8n.f_title}}
+        </p>
+        <p class="s-no">
+          <small>{{f.int8n.serie}}</small>{{f.bill.serie}}<small>{{f.int8n.numar}}</small>{{f.bill.numar}}
+        </p>
+        <p class="date">
+          <small>{{f.int8n.data}}</small>{{f.bill.data}}
+        </p>
+      </div>
+      <div class="right">
+        <span class="total">
+          {{f.int8n.total}}
+        </span>
+        <span class="worth">
+          {{f.bill.total + ' ' + f.bill.currency}}
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="table">
+    <div class="tab">
+      <div ng-repeat="task in f.bill.columns"
+           ng-style="{{f.getWidth($index)}}">
+        {{task}}
+      </div>
+    </div>
+    <div class="prod-row" ng-repeat="prod in f.bill.products">
+      <div class="name">
+        <p class="title">{{prod.title}}</p>
+        <p class="desc">{{prod.desc}}</p>
+      </div>
+      <div ng-repeat="line in prod.lines" ng-style="{{f.getLineWidth($index)}}">
+        {{line + ' ' + f.bill.currency}}</div>
+    </div>
+  </div>
+  <div class="jos">
+    <div class="foot">
+      <div class="left">
+
+      </div>
+      <div class="right">
+
+      </div>
+    </div>
+  </div>
+</div>
