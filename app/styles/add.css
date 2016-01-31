@@ -1,12 +1,132 @@
-.input-list {
-  border-right: 3px solid rgb(48, 55, 64);
+#client-modal {
+  background: rgb(48, 55, 64);
+  overflow: hidden;
 }
 .block-list header {
-  background: rgb(48, 55, 64);
-  color: white;
-  padding: 1em 1em 0.5em 0;
+  color: #BDB099;
+  padding: 0.8em 0 0.5em 1em;
+  margin: 0;
+  border-bottom: 3px solid #625747;
+}
+#client-modal {
+  border: 0.5rem solid #625747;
+}
+#client-modal ul, #client-modal a {
   margin: 0;
 }
-.block-list ul {
+#client-modal .grid-block input, .input-list .grid-block input:hover,.input-list .grid-block input:focus {
+  border-right: 2px solid rgba(98, 87, 71, 0.75);
+}
+#client-modal .grid-block input:last-child {
+  border-right: none;
+}
+
+#client-modal .lane {
+  width: 100%;
+}
+#client-modal .top {
+  height: 15%;
+}
+#client-modal .mid {
+  height: calc(85% - 2.5rem);
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+#client-modal .bank {
+  max-height: 11rem;
+  height: 11rem;
+  overflow: hidden;
+}
+#client-modal .btm {
+  /*background: #4A5460;*/
+  border-top: 3px solid #625747;
+  height: 2.5rem;
+}
+
+#client-pane {
+  position: relative;
+  height: 100%;
+  background: #1B242E;
+}
+#client-pane .head {
+  border-bottom: 5px solid #625747;
+  position: relative;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  padding-bottom: 2rem;
+  height: 8rem;
+}
+#client-pane .head:hover {
+  background: #111C2A;
+  border: 5px solid #625747;
+}
+#client-pane .head span {
+  color: #BDB099;
+  font-size: 1.5em;
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 0;
+  text-align: center;
+  transform: translateY(-50%);
+}
+#client-pane .card-divider {
+  padding: 0;
+  position: relative;
+  height: 3.25rem;
+}
+#client-pane .card-divider i {
+  position: absolute;
+  font-size: 2rem;
+  color: #67707C;
+}
+#client-pane .card-divider i.fa-search {
+  top: 0.5rem;
+  left: 1rem;
+}
+#client-pane .card-divider i.fa-plus {
+  cursor: pointer;
+  top: 0.3rem;
+  right: 0.75rem;
+  padding: 0.2em 0.2em 0.1em 0.27em;
+  border-radius: 20px;
+}
+#client-pane .card-divider i.fa-plus:hover {
+  color: #BDB099;
+  background: #67707C;
+  -webkit-box-shadow: 3px 3px 10px 0px rgba(17, 28, 42,0.75);
+  -moz-box-shadow: 3px 3px 10px 0px rgba(17, 28, 42,0.75);
+  box-shadow: 3px 3px 10px 0px rgba(17, 28, 42,0.75);
+}
+#client-pane .card-divider input {
+  height: 100%;
+  width: 100%;
   margin: 0;
+  font-size: 1rem;
+  padding: 1rem 4rem;
+  border: none;
+  background: #1B242E;
+  color: #67707C;
+}
+#client-pane .card-section {
+  padding: 1em 0;
+  position: relative;
+  height: calc(100% - 11.5rem);
+}
+#client-pane .card-section section {
+  border-top: 5px solid #625747;
+  margin-top: -1rem;
+  position: relative;
+  height: calc(100% - 1.25em) !important;
+}
+#client-pane .card-section label {
+  color: #67707C;
+}
+#client-pane .card-section .block-list li:first-child {
+  border-top: 2px solid #67707C;
+}
+#client-pane .card-section .block-list li {
+  border-bottom: 2px solid #67707C;
 }

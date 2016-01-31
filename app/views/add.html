@@ -1,73 +1,42 @@
-<div class="align-justify grid-block">
-  <div class="small-4 input-list">
-    <section class="block-list">
-      <header>Client</header>
-      <ul>
-        <li><input type="text" placeholder="Denumire Firma"></li>
-        <li><input type="text" placeholder="Password"></li>
-      </ul>
-    </section>
-    <section class="block-list">
-      <header>I'm a Checkbox</header>
-      <ul>
-        <li>
-          <input type="checkbox" id="life">
-          <label for="life">Yeah!</label>
-        </li>
-        <li>
-          <input type="checkbox" id="rad">
-          <label for="rad">Radical!</label>
-        </li>
-      </ul>
-    </section>
-    <section class="block-list">
-      <header>I Have Radio Buttons</header>
-      <ul>
-        <li>
-          <input type="radio" name="delicious" id="eggs" value="eggs" checked="">
-          <label for="eggs">Eggs</label>
-        </li>
-        <li>
-          <input type="radio" name="delicious" id="bacon" value="bacon">
-          <label for="bacon">Bacon</label>
-        </li>
-        <li>
-          <input type="radio" name="delicious" id="toast" value="toast">
-          <label for="toast">Toast</label>
-        </li>
-      </ul>
-    </section>
-    <section class="block-list">
-      <header>Look, I gotta Switch</header>
-      <ul>
-        <li>
-          <span>Switch!</span>
-          <div class="switch">
-            <input type="checkbox" id="switchOne">
-            <label for="switchOne"></label>
-          </div>
-        </li>
-      </ul>
-    </section>
-    <section class="block-list">
-      <header>I Hold Forms</header>
-      <ul>
-        <li><input type="text" placeholder="User name"></li>
-        <li><input type="password" placeholder="Password"></li>
-      </ul>
-    </section>
-    <section class="block-list">
-      <header>I Even Have Selectboxes</header>
-      <ul>
-        <li class="with-dropdown"><select name="" id="">
-          <option>Now</option>
-          <option>Later</option>
-          <option>Eventually</option>
-          <option>Forever</option>
-        </select></li>
-      </ul>
-    </section>
+<div class="grid-frame">
+
+  <div id="client-pane" class="small-3 vertical grid-block dark card" ng-switch on="vm.cli.selected.toString()" >
+    <div class="head" ng-click="vm.openClientModal()" ng-mouseenter="vm.cli.setText(true, $event)" ng-mouseleave="vm.cli.setText(false, $event)">
+      <span ng-switch-when="false">{{vm.cli.text}}</span>
+      <span ng-switch-when="true">{{vm.client.nume}}</span>
+    </div>
+    <div class="add">
+
+    </div>
+    <div class="search">
+
+    </div>
+    <div class="card-divider">
+      <input type="text" ng-model="vm.cli.searchInput">
+      <i class="fa fa-search"></i>
+      <i class="fa fa-plus" ng-click="vm.openClientModal({banca: []})"></i>
+    </div>
+    <div class="card-section">
+      <section class="block-list" style="overflow: hidden;">
+        <header>{{vm.int8n.clients}}</header>
+        <div style="overflow: auto; height: calc(100% - 2rem);">
+          <ul style="overflow: auto">
+            <li ng-repeat="client in vm.clients | filter: vm.cli.searchInput as results">
+              <input type="radio" id="{{client._id}}" name="{{client._id}}" ng-model="vm.selectedClient" ng-value="client._id">
+              <label for="{{client._id}}">{{client.nume}}</label>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
   </div>
-  <!--<div class="small-4 grid-block"></div>-->
+  <div class="small-9 vertical grid-block" style="background: #303740">
+    <div class="grid-block">
+
+    </div>
+    <div class="grid-block">
+
+    </div>
+  </div>
   <!--<div class="small-4 grid-block"></div>-->
 </div>

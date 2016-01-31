@@ -1,13 +1,25 @@
 .block-list {
   margin: 0;
 }
-.top-bar, .top-bar ul, .top-bar a {
-  background: rgb(48, 55, 64);
-  color: white;
-  border-color: rgb(40, 47, 56);
-}
 .top-bar ul {
-  -webkit-box-shadow: 3px 3px 10px 0px rgba(48, 55, 64,0.75);
-  -moz-box-shadow: 3px 3px 10px 0px rgba(48, 55, 64,0.75);
-  box-shadow: 3px 3px 10px 0px rgba(48, 55, 64,0.75);
+  -webkit-box-shadow: 3px 3px 10px 0px rgba(17, 28, 42,0.75);
+  -moz-box-shadow: 3px 3px 10px 0px rgba(17, 28, 42,0.75);
+  box-shadow: 3px 3px 10px 0px rgba(17, 28, 42,0.75);
+}
+.top-bar, .top-bar ul {
+  background: #111C2A;
+}
+.top-bar .menu-text {
+  color: #BDB099;
+  font-size: 1.25rem;
+}
+.top-bar li a {
+  color: #E3DAC9 !important;
+}
+.modal {
+  background:  #303740;
+}
+
+a {
+  color: #BDB099;
 }

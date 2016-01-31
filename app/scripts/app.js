@@ -33,10 +33,12 @@ angular
       })
       .when('/Adauga', {
         templateUrl: 'views/add.html',
-        controller: 'AddCtrl as f'
-        //resolve: {
-        //  postPromise: dbPromise('videos')
-        //}
+        controller: 'AddCtrl as vm',
+        resolve: {
+          postPromise: ['$clients', function($clients) {
+            return $clients('init');
+          }]
+        }
       })
       .when('/Bill', {
         templateUrl: 'views/bill.html',
