@@ -1,13 +1,23 @@
 'use strict';
 
 /**
- * @ngdoc function
- * @name facturiSswApp.controller:BillCtrl
+ * @ngdoc overview
+ * @name generatorFactura
  * @description
- * # BillCtrl
- * Controller of the facturiSswApp
+ * # generatorFactura
+ *
+ * Main module of the application.
  */
-angular.module('facturiSswApp')
+angular
+  .module('generatorFactura', [
+    'foundation',
+    'ngAnimate',
+    'ngCookies',
+    'ngResource',
+    'ngRoute',
+    'ngSanitize',
+    'ngTouch'
+  ])
   .controller('BillCtrl', function () {
     this.getWidth = function($index) {
       return {

@@ -2,9 +2,9 @@
   margin: 0;
 }
 .top-bar ul {
-  -webkit-box-shadow: 3px 3px 10px 0px rgba(17, 28, 42,0.75);
-  -moz-box-shadow: 3px 3px 10px 0px rgba(17, 28, 42,0.75);
-  box-shadow: 3px 3px 10px 0px rgba(17, 28, 42,0.75);
+  -webkit-box-shadow: 3px 3px 10px 0 rgba(17, 28, 42,0.75);
+  -moz-box-shadow: 3px 3px 10px 0 rgba(17, 28, 42,0.75);
+  box-shadow: 3px 3px 10px 0 rgba(17, 28, 42,0.75);
 }
 .top-bar, .top-bar ul {
   background: #111C2A;
