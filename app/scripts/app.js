@@ -46,6 +46,10 @@ angular
         //resolve: {
         //  postPromise: dbPromise('videos')
         //}
+      })
+      .when('/AddBon', {
+        templateUrl: 'views/add_bon.html',
+        controller: 'AddBonCtrl'
       });
   }
   ]);
