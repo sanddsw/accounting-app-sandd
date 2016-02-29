@@ -8,59 +8,50 @@
  * Factory in the facturiSswApp.
  */
 angular.module('facturiSswApp')
-  .factory('$bonuri',['$http', '$q', function ($http, $q) {
-    var bonuri = [],
-      $_ = {
-        init: function() {
-          if(bonuri.length > 0) return;
-          return $http.get('http://facturi-ssw.cloudapp.net/bonuri/').success(function(data) {
-            bonuri = data;
-          });
-        },
-        list: function() {
-          return bonuri;
-        },
-        bon: function(index) {
-          return bonuri[index];
-        },
-        getById: function(id) {
-          for(var i = 0, len = bonuri.length; i < len; i++) {
-            if(bonuri[i]._id == id) {
-              return bonuri[i];
-            }
-          }
-          return {banca: []};
-        },
-        push: function(bon) {
-          var deferred = $q.defer();
+  .service('$bonuri',['$http', function ($http) {
 
-          $http.post('http://facturi-ssw.cloudapp.net/bonuri/', bon).success(function(data) {
-            if(data.success) {
-              bonuri.push(data.bon);
-            }
+    var url = "http://localhost:8080/bonuri/";
+    //var url = "http://facturi-ssw.cloudapp.net/bonuri/";
+    var bonuri = [];
 
-            deferred.resolve(data.success);
-          });
+    this.init = function(callback) {
+      if(bonuri.length > 0) return;
+      return $http.get(url).success(function(data) {
+        bonuri = data;
+        callback();
+      });
+    };
 
-          return deferred.promise;
-        },
-        update: function(bon) {
-          var deferred = $q.defer();
+    this.list = function() {
+      return bonuri;
+    };
 
-          $http.post('http://facturi-ssw.cloudapp.net/bonuri/update', bon).success(function(data) {
-            if(data.success) {
-              bonuri.push(data.bon);
-            }
+    this.bon = function(index) {
+      return bonuri[index];
+    };
 
-            deferred.resolve(data.success);
-          });
-
-          return deferred.promise;
+    this.getById = function(id) {
+      for(var i = 0, len = bonuri.length; i < len; i++) {
+        if(bonuri[i]._id == id) {
+          return bonuri[i];
         }
-      };
+      }
+      return undefined;
+    };
 
-    // Public API here
-    return function(type, options) {
-      return $_[type](options);
-    }
+    this.push = function(bon) {
+      $http.post(url, bon).success(function(data) {
+        if(data._id) {
+          bonuri.push(data);
+        }
+      });
+    };
+
+    this.update = function(bon) {
+      $http.post(url, bon).success(function(data) {
+        if(data._id) {
+          bonuri.push(data);
+        }
+      });
+    };
   }]);

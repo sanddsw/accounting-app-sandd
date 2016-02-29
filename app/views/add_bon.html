@@ -5,20 +5,20 @@
         <div class="row">
           <div class="medium-5 columns">
             <label>Produs
-              <input type="text" placeholder="Ex. Benzina, Diverse birou">
+              <input type="text" placeholder="Ex. Benzina, Diverse birou" ng-model="bonProducts">
             </label>
           </div>
-          <div class="medium-3 columns">
+          <div class="medium-4 columns">
             <label>Data
-              <input type="text" placeholder="02/04/2016">
+              <input type="date" placeholder="02/04/2016" ng-model="bonDate" ng-init="new Date()">
             </label>
           </div>
           <div class="medium-2 columns">
             <label>Pret
-              <input type="text" placeholder="30.89">
+              <input type="number" placeholder="30.89" ng-model="bonAmount">
             </label>
           </div>
-          <div class="medium-2 columns">
+          <div class="medium-1 columns">
             <button type="button" class="button" ng-click="saveBon()">Add</button>
           </div>
         </div>
@@ -35,10 +35,10 @@
           </tr>
           </thead>
           <tbody>
-          <tr>
-            <td>Benzina</td>
-            <td>02/04/1990</td>
-            <td>30.89</td>
+          <tr ng-repeat="bon in bonuri | orderBy : 'date' as sortedBons">
+            <td>{{bon.products}}</td>
+            <td>{{bon.date | date:'MM/dd/yyyy'}}</td>
+            <td>{{bon.amount}}</td>
           </tr>
           </tbody>
         </table>

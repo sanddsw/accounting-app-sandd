@@ -40,16 +40,12 @@ angular
           }]
         }
       })
-      .when('/Bill', {
-        templateUrl: 'views/bill.html',
-        controller: 'BillCtrl as f'
-        //resolve: {
-        //  postPromise: dbPromise('videos')
-        //}
-      })
       .when('/AddBon', {
         templateUrl: 'views/add_bon.html',
-        controller: 'AddBonCtrl'
+        controller: 'AddBonCtrl',
+        postPromise: ['$bonuri', function($bonuri) {
+          return $bonuri.init();
+        }]
       });
   }
   ]);
