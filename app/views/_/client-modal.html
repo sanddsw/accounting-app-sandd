@@ -1,46 +1,40 @@
-
-<div id="client-modal">
-  <div class="lane top"></div>
-  <div class="lane mid">
-    <section class="block-list">
-      <header>{{int8n.comData}}</header>
-      <ul>
-        <li class="grid-block">
-          <input type="text" ng-model="client.nume" placeholder="Denumire Firma">
-        </li>
-        <li class="grid-block">
-          <input class="small-6" ng-model="client.cif" type="text" placeholder="C.I.F.">
-          <input class="small-6" ng-model="client.orc" type="text" placeholder="Nr. Ord. O.R.C.">
-        </li>
-      </ul>
-    </section>
-    <section class="block-list">
-      <header>{{int8n.address}}</header>
-      <ul>
-        <li><input ng-model="client.sediu" type="text" placeholder="Sediul"></li>
-        <li><input ng-model="client.sediu2" type="text" placeholder="Sediul(completare)"></li>
-        <li class="grid-block">
-          <input class="small-4" ng-model="client.oras" type="text" placeholder="Oras">
-          <input class="small-4" ng-model="client.tara" type="text" placeholder="Tara">
-          <input class="small-4" ng-model="client.judet" type="text" placeholder="Judet">
-        </li>
-      </ul>
-    </section>
-    <section class="block-list bank">
-      <header>{{int8n.bank}}</header>
-      <div style="overflow: auto;height: calc(100% - 2em)">
-        <ul>
-          <li class="grid-block with-dropdown" ng-repeat="bankAcc in client.banca">
-            <input class="small-5" ng-model="bankAcc.nume" type="text" placeholder="Banca">
-            <input class="small-7" ng-model="bankAcc.cont" type="text" placeholder="IBAN">
-          </li>
-          <li><a class="button dark expand" ng-click="addAccount()"><i class="fa fa-plus"></i></a></li>
-        </ul>
+<div>
+  <div class="grid-block vertical">
+    <div class="primary title-bar">
+      <div class="center title">Client</div>
+    </div>
+    <div class="grid-block vertical modal-content">
+      <div class="grid-block">
+        <div class="grid-block">
+          <div class="grid-content">
+            <input type="text" placeholder="Search" ng-model="searchInput"/>
+          </div>
+        </div>
+        <div class="grid-block shrink">
+          <div class="grid-content">
+            <input ng-click="add()" type="button" class="button" value="ADD"/>
+          </div>
+        </div>
       </div>
-    </section></div>
-  <div class="lane btm align-justify grid-block">
-
-    <a href="" class="small-5 button alert" ng-click="close()"><i class="fa fa-times"></i> CLOSE </a>
-    <a href="" class="small-7 button success" ng-click="pushClient()"> OK <i class="fa fa-check"></i></a>
+      <div class="grid-block block-list-container" style="height: calc(43px * 6)">
+        <div class="grid-content">
+          <section class="block-list">
+            <form>
+              <ul>
+                <li ng-repeat="client in clients | filter: searchInput as results">
+                  <input type="radio" id="{{client._id}}" name="client" ng-value="client">
+                  <label for="{{client._id}}" ng-click="set(client)">{{client.nume}}</label>
+                </li>
+              </ul>
+            </form>
+          </section>
+        </div>
+      </div>
+    </div>
+    <div class="grid-block modal-bottom">
+      <div class="grid-content">
+        <input ng-click="close()" type="button" class="button expand" value="OK"/>
+      </div>
+    </div>
   </div>
 </div>

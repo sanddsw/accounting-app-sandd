@@ -1,42 +1,87 @@
-<div class="grid-frame">
-
-  <div id="client-pane" class="small-3 vertical grid-block dark card" ng-switch on="vm.cli.selected.toString()" >
-    <div class="head" ng-click="vm.openClientModal()" ng-mouseenter="vm.cli.setText(true, $event)" ng-mouseleave="vm.cli.setText(false, $event)">
-      <span ng-switch-when="false">{{vm.cli.text}}</span>
-      <span ng-switch-when="true">{{vm.client.nume}}</span>
-    </div>
-    <div class="add">
-
-    </div>
-    <div class="search">
-
-    </div>
-    <div class="card-divider">
-      <input type="text" ng-model="vm.cli.searchInput">
-      <i class="fa fa-search"></i>
-      <i class="fa fa-plus" ng-click="vm.openClientModal({banca: []})"></i>
-    </div>
-    <div class="card-section">
-      <section class="block-list" style="overflow: hidden;">
-        <header>{{vm.int8n.clients}}</header>
-        <div style="overflow: auto; height: calc(100% - 2rem);">
-          <ul style="overflow: auto">
-            <li ng-repeat="client in vm.clients | filter: vm.cli.searchInput as results">
-              <input type="radio" id="{{client._id}}" name="{{client._id}}" ng-model="vm.selectedClient" ng-value="client._id">
-              <label for="{{client._id}}">{{client.nume}}</label>
-            </li>
-          </ul>
+ <div class="row">
+  <div class="small-12 large-10 columns small-centered">
+    <div class="sus">
+      <div class="pane logo">
+        <img src="images/logo.png">
+      </div>
+      <div class="pane firms">
+        <div class="furnizor">
+          <div class="head">
+            {{f.int8n.furnizor}}
+          </div>
+          <p><small>{{f.int8n.name}}</small>{{f.bill.seller.name}}</p>
+          <p><small>{{f.int8n.cif}}</small>{{f.bill.seller.cif}}</p>
+          <p><small>{{f.int8n.orc}}</small>{{f.bill.seller.orc}}</p>
+          <p><small>{{f.int8n.sediu}}</small>{{f.bill.seller.sediu}}</p>
+          <p><small>{{f.int8n.oras}}</small>{{f.bill.seller.oras}}</p>
+          <p><small>{{f.int8n.judet}}</small>{{f.bill.seller.judet}}</p>
+          <p><small>{{f.int8n.tara}}</small>{{f.bill.seller.tara}}</p>
+          <p><small>{{f.int8n.banca}}</small>{{f.bill.seller.banca}}</p>
+          <p><small>{{f.int8n.cont}}</small>{{f.bill.seller.cont}}</p>
         </div>
-      </section>
+        <div class="cumparator">
+          <div class="head" ng-click="vm.openSearchClientModal()">
+            {{f.int8n.cumparator}}
+          </div>
+          <p ng-click="vm.openClientModal()"><small>{{f.int8n.name}}</small>{{f.bill.buyer.name}}</p>
+          <p ng-click="vm.openClientModal()"><small>{{f.int8n.cif}}</small>{{f.bill.buyer.cif}}</p>
+          <p ng-click="vm.openClientModal()"><small>{{f.int8n.orc}}</small>{{f.bill.buyer.orc}}</p>
+          <p ng-click="vm.openClientModal()"><small>{{f.int8n.sediu}}</small>{{f.bill.buyer.sediu}}</p>
+          <p ng-click="vm.openClientModal()"><small>{{f.int8n.oras}}</small>{{f.bill.buyer.oras}}</p>
+          <p ng-click="vm.openClientModal()"><small>{{f.int8n.judet}}</small>{{f.bill.buyer.judet}}</p>
+          <p ng-click="vm.openClientModal()"><small>{{f.int8n.tara}}</small>{{f.bill.buyer.tara}}</p>
+          <p ng-click="vm.openClientModal()"><small>{{f.int8n.banca}}</small>{{f.bill.buyer.banca}}</p>
+          <p ng-click="vm.openClientModal()"><small>{{f.int8n.cont}}</small>{{f.bill.buyer.cont}}</p>
+        </div>
+      </div>
+      <div class="pane details">
+        <div class="left">
+          <p class="title">
+            {{f.int8n.f_title}}
+          </p>
+          <p class="s-no">
+            <small>{{f.int8n.serie}}</small>{{f.bill.serie}}<small>{{f.int8n.numar}}</small>{{f.bill.numar}}
+          </p>
+          <p class="date">
+            <small>{{f.int8n.data}}</small>{{f.bill.data}}
+          </p>
+        </div>
+        <div class="right">
+        <span class="total">
+          {{f.int8n.total}}
+        </span>
+        <span class="worth">
+          {{f.bill.total + ' ' + f.bill.currency}}
+        </span>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="small-9 vertical grid-block" style="background: #303740">
-    <div class="grid-block">
+    <div class="table">
+      <div class="tab">
+        <div ng-repeat="task in f.bill.columns"
+             ng-style="{{f.getWidth($index)}}">
+          {{task}}
+        </div>
+      </div>
+      <div class="prod-row" ng-repeat="prod in f.bill.products">
+        <div class="name">
+          <p class="title">{{prod.title}}</p>
+          <p class="desc">{{prod.desc}}</p>
+        </div>
+        <div ng-repeat="line in prod.lines" ng-style="{{f.getLineWidth($index)}}">
+          {{line + ' ' + f.bill.currency}}</div>
+      </div>
+    </div>
+    <div class="jos">
+      <div class="foot">
+        <div class="left">
+
+        </div>
+        <div class="right">
+
+        </div>
+      </div>
+    </div>
 
     </div>
-    <div class="grid-block">
-
-    </div>
-  </div>
-  <!--<div class="small-4 grid-block"></div>-->
-</div>
+ </div>

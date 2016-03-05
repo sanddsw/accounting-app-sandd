@@ -28,7 +28,7 @@ angular.module('facturiSswApp')
       },
       clients: $clients('list'),
       client: {
-        banca: []
+        banca: [{ nume: '', cont: ''}]
       },
       openClientModal: function (client) {
         if(!client) client = vm.client;
@@ -36,30 +36,151 @@ angular.module('facturiSswApp')
           class: 'small',
           overlay: true,
           overlayClose: false,
-          templateUrl: 'views/_/client-modal.html',
+          templateUrl: 'views/_/add-client-modal.html',
           contentScope: {
             addAccount: function (){
-              console.log(client);
+              if (client.banca.length > 2) {
+                return;
+              }
               client.banca.push({});
+            },
+            removeAccount: function (index){
+              client.banca.splice(index, 1);
             },
             int8n: vm.int8n,
             client: client,
             close: function() {closeClientModal(modal)},
             pushClient: function() {
-              closeClientModal(modal);
               $clients(((client._id) ? 'update' : 'push'), client).then(function(data) {
-                console.log(data);
+                closeClientModal(modal);
+                vm.clients.push(client);
+                vm.openSearchClientModal();
               });
             }
+          }
+        });
+        modal.activate();
+      },
+      openSearchClientModal: function () {
+        var modal = new ModalFactory({
+          class: 'small',
+          overlay: true,
+          overlayClose: false,
+          templateUrl: 'views/_/client-modal.html',
+          contentScope: {
+            close: function() {
+              closeClientModal(modal);
+            },
+            set: function(client) {
+              vm.client = client;
+            },
+            add: function() {
+              closeClientModal(modal);
+              vm.openClientModal({banca: [{}]})
+            },
+            clients: vm.clients
           }
         });
         modal.activate();
       }
     });
 
-    $scope.$watch('vm.selectedClient', function(newVal) {
-      vm.client = $clients('getById', newVal);
-      if(vm.client && vm.client._id) vm.cli.selected = true;
+    $scope.f = {
+      int8n: {
+        data: "Data",
+        f_title: "Factura Fiscala",
+        serie: "Serie",
+        numar: "Numar",
+        furnizor: "Furnizor",
+        cumparator: "Cumparator",
+        name: "Denumirea firmei",
+        cif: "Codul unic de identificare",
+        orc: "Numar ordin ORC",
+        sediu: "Sediul",
+        oras: "Oras",
+        judet: "Judet",
+        tara: "Tara",
+        banca: "Banca",
+        cont: "IBAN",
+        total: "TOTAL"
+      },
+      en: {
+        data: "Date",
+        f_title: "Invoice",
+        serie: "Series",
+        numar: "Number",
+        furnizor: "Seller",
+        cumparator: "Buyer",
+        name: "Company name",
+        cif: "Unique Registry Number",
+        orc: "ORC Registry Number",
+        sediu: "Headquarters",
+        oras: "City",
+        judet: "County/Region",
+        tara: "Country",
+        banca: "Bank",
+        cont: "IBAN",
+        total: "TOTAL"
+      },
+      bill: {
+        serie: "SSW",
+        numar: "001",
+        data: "02-09-2015",
+        currency: "RON",
+        columns: ["SERVICIU OFERIT", "VALOARE"],
+        total: 4e3,
+        seller: {
+          name: "Sandd Soft Works S.R.L.",
+          cif: "33535396",
+          orc: "J25/235/01.09.2014",
+          sediu: "Str Smardan 26, Bl S4E, Sc 1, Ap 4",
+          oras: "Drobeta Turnu Severin",
+          judet: "Mehedinti",
+          tara: "Romania",
+          banca: "ING Bank",
+          cont: "RO000PULA"
+        },
+        buyer: {
+          name: "Sandd Soft Works S.R.L.",
+          cif: "33535396",
+          orc: "J25/235/01.09.2014",
+          sediu: "Str Smardan 26, Bl S4E, Sc 1, Ap 4",
+          oras: "Drobeta Turnu Severin",
+          judet: "Mehedinti",
+          tara: "Romania",
+          banca: "ING Bank",
+          cont: "RO000PULA"
+        },
+        products: [{
+          lines: [4e3],
+          title: "Dezvoltare software la comanda",
+          desc: "Conform contractului 01.01.2016"
+        }, {lines: [4e3], title: "Dezvoltare software la comanda", desc: "Conform contractului 01.01.2016"}]
+      },
+      getWidth: function (a) {
+        return {width: 0 != a ? "" + (45 - 15 * (this.bill.columns.length - 2)) + "%" : "55%"}
+      },
+      getLineWidth: function (a) {
+        return {width: 0 != a ? "" + (45 - 15 * (this.bill.columns.length - 2)) + "%" : "45%"}
+      }
+    };
+
+    $scope.$watch('vm.client', function(client) {
+      if (client.nume === undefined && client.banca[0].nume === '') {
+        return;
+      }
+      var buyer = {
+        name: client.nume,
+        cif: client.cif,
+        orc: client.orc,
+        sediu: client.adresa,
+        oras: client.oras,
+        judet: client.judet,
+        tara: client.tara,
+        banca: client.banca[0].nume,
+        cont: client.banca[0].cont
+      };
+      $scope.f.bill.buyer = buyer;
     });
 
 

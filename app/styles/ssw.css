@@ -174,13 +174,26 @@ body .table .prod-row .name .desc {
 }
 body {
   background: white;
-  width: 21cm;
   height: 29.7cm;
   display: block;
-  margin: 0 auto;
-  margin-bottom: 0.5cm;
   box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
 }
+}
+.modal {
+  padding: 0;
+}
+.modal-content {
+  margin-top: 1rem !important;
+}
+
+.modal-bottom {
+  margin-top: 1rem !important;
+}
+
+.block-list-container {
+  background: white !important;
+  margin-left: 1rem !important;
+  margin-right: 1rem !important;
 }
 body .sus {
   position: relative;
@@ -190,6 +203,11 @@ body .sus {
 }
 body .sus .pane {
   width: 100%;
+}
+.top-bar-title {
+  color: #625747;
+  margin: 0.5rem;
+
 }
 .pane.details {
   height: 25%;
@@ -263,9 +281,9 @@ body .sus .pane {
   font-size: 0.6em;
 }
 .pane.details .right .worth {
-  position: absolute;
-  right: 0.5em;
-  top: calc(100% + 3rem);
+  position: relative;
+  top: 0.5em;
+  left: calc(100% - 12rem);
   font-size: 2rem;
 }
 .pane.details div p {
@@ -300,7 +318,6 @@ body .table .tab {
   display: -webkit-box;
 }
 body .table .tab div {
-  border-left: 3px solid white;
   font-size: 0.5rem;
   padding: 1rem 0;
   height: 100%;
@@ -357,10 +374,7 @@ body .table .prod-row .name .desc {
 }
 body {
   background: white;
-  width: 21cm;
-  height: 29.7cm;
   display: block;
-  margin: 0 auto;
-  margin-bottom: 0.5cm;
+  margin: auto;
   box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
 }

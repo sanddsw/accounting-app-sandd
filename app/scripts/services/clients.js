@@ -9,13 +9,12 @@
  */
 angular.module('facturiSswApp')
   .factory('$clients',['$http', '$q', function ($http, $q) {
-    // Service logic
-    // ...
-    var clientsList = [],
+    var clientsList = [];
+    var url = "http://localhost:8080/clients/",
       $_ = {
         init: function() {
           if(clientsList.length > 0) return;
-          return $http.get('http://facturi-ssw.cloudapp.net/clients/').success(function(data) {
+          return $http.get(url).success(function(data) {
             clientsList = data;
           });
         },
@@ -36,7 +35,7 @@ angular.module('facturiSswApp')
         push: function(client) {
           var deferred = $q.defer();
 
-          $http.post('http://facturi-ssw.cloudapp.net/clients/', client).success(function(data) {
+          $http.post(url, client).success(function(data) {
             if(data.success) {
               clientsList.push(data.client);
             }
@@ -49,7 +48,7 @@ angular.module('facturiSswApp')
         update: function(client) {
           var deferred = $q.defer();
 
-          $http.post('http://facturi-ssw.cloudapp.net/clients/update', client).success(function(data) {
+          $http.post(url + 'update', client).success(function(data) {
             if(data.success) {
               clientsList.push(data.client);
             }
