@@ -43,9 +43,11 @@ angular
       .when('/AddBon', {
         templateUrl: 'views/add_bon.html',
         controller: 'AddBonCtrl',
-        postPromise: ['$bonuri', function($bonuri) {
-          return $bonuri.init();
-        }]
+        resolve: {
+          postPromise: ['$bonuri', function ($bonuri) {
+            return $bonuri.init();
+          }]
+        }
       });
   }
   ]);

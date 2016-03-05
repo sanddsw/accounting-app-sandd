@@ -10,10 +10,10 @@
 angular.module('facturiSswApp')
   .controller('AddBonCtrl', function ($bonuri, $scope) {
     $scope.bonDate = new Date();
+    $scope.maxDate =new Date();
+    $scope.maxDate = $scope.maxDate.setDate($scope.maxDate.getDate() + 1); // Used in form validation
 
-    $bonuri.init(function () {
-      $scope.bonuri = $bonuri.list();
-    });
+    $scope.bonuri = $bonuri.list();
 
     $scope.saveBon = function () {
       var bon = {

@@ -18,7 +18,9 @@ angular.module('facturiSswApp')
       if(bonuri.length > 0) return;
       return $http.get(url).success(function(data) {
         bonuri = data;
-        callback();
+        if (callback) {
+          callback(data);
+        }
       });
     };
 
