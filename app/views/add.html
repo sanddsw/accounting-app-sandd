@@ -1,87 +1,197 @@
- <div class="row">
-  <div class="small-12 large-10 columns small-centered">
-    <div class="sus">
-      <div class="pane logo">
-        <img src="images/logo.png">
+<div class="small-12 large-8 grid-block vertical large-centered">
+  <!-- HEADER -->
+  <div class="grid-block vertical header">
+     <!--Logo-->
+    <div class="grid-block">
+      <div class="grid-container contain-left">
+        <div class="grid-content">
+          <img src="images/logo.png">
+        </div>
       </div>
-      <div class="pane firms">
-        <div class="furnizor">
-          <div class="head">
-            {{f.int8n.furnizor}}
+    </div>
+
+     <!--Furnizor Cumparator-->
+    <div class="grid-block align-justify furnizor-cumparator-block">
+      <!-- Furnizor -->
+      <div class="small-4 grid-block vertical">
+        <div class="grid-block">
+          <div class="grid-content"><h1>{{vm.int8n[vm.language].seller}}</h1></div>
+        </div>
+
+        <div class="grid-block align-justify">
+          <!-- Labels Column-->
+          <div class="grid-block vertical">
+              <div class="grid-content"><small>{{vm.int8n[vm.language].name}}</small></div>
+              <div class="grid-content"><small>{{vm.int8n[vm.language].orc}}</small></div>
+              <div class="grid-content"><small>{{vm.int8n[vm.language].cif}}</small></div>
+              <div class="grid-content"><small>{{vm.int8n[vm.language].address}}</small></div>
+              <div class="grid-content"><small>{{vm.int8n[vm.language].city}}</small></div>
+              <div class="grid-content"><small>{{vm.int8n[vm.language].region}}</small></div>
+              <div class="grid-content"><small>{{vm.int8n[vm.language].country}}</small></div>
+              <div class="grid-content"><small>{{vm.int8n[vm.language].bank}}</small></div>
+              <div class="grid-content"><small>{{vm.int8n[vm.language].bankAccount}}</small></div>
           </div>
-          <p><small>{{f.int8n.name}}</small>{{f.bill.seller.name}}</p>
-          <p><small>{{f.int8n.cif}}</small>{{f.bill.seller.cif}}</p>
-          <p><small>{{f.int8n.orc}}</small>{{f.bill.seller.orc}}</p>
-          <p><small>{{f.int8n.sediu}}</small>{{f.bill.seller.sediu}}</p>
-          <p><small>{{f.int8n.oras}}</small>{{f.bill.seller.oras}}</p>
-          <p><small>{{f.int8n.judet}}</small>{{f.bill.seller.judet}}</p>
-          <p><small>{{f.int8n.tara}}</small>{{f.bill.seller.tara}}</p>
-          <p><small>{{f.int8n.banca}}</small>{{f.bill.seller.banca}}</p>
-          <p><small>{{f.int8n.cont}}</small>{{f.bill.seller.cont}}</p>
-        </div>
-        <div class="cumparator">
-          <div class="head" ng-click="vm.openSearchClientModal()">
-            {{f.int8n.cumparator}}
+
+          <!-- Values Column-->
+          <div class="grid-block vertical" style="text-align:right">
+              <div class="grid-content">{{vm.f.seller.name}}</div>
+              <div class="grid-content">{{vm.f.seller.orc}}</div>
+              <div class="grid-content">{{vm.f.seller.cif}}</div>
+              <div class="grid-content">{{vm.f.seller.address}}</div>
+              <div class="grid-content">{{vm.f.seller.city}}</div>
+              <div class="grid-content">{{vm.f.seller.region}}</div>
+              <div class="grid-content">{{vm.f.seller.country}}</div>
+              <div class="grid-content">{{vm.f.seller.bank}}</div>
+              <div class="grid-content">{{vm.f.seller.bankAccount}}</div>
           </div>
-          <p ng-click="vm.openClientModal()"><small>{{f.int8n.name}}</small>{{f.bill.buyer.name}}</p>
-          <p ng-click="vm.openClientModal()"><small>{{f.int8n.cif}}</small>{{f.bill.buyer.cif}}</p>
-          <p ng-click="vm.openClientModal()"><small>{{f.int8n.orc}}</small>{{f.bill.buyer.orc}}</p>
-          <p ng-click="vm.openClientModal()"><small>{{f.int8n.sediu}}</small>{{f.bill.buyer.sediu}}</p>
-          <p ng-click="vm.openClientModal()"><small>{{f.int8n.oras}}</small>{{f.bill.buyer.oras}}</p>
-          <p ng-click="vm.openClientModal()"><small>{{f.int8n.judet}}</small>{{f.bill.buyer.judet}}</p>
-          <p ng-click="vm.openClientModal()"><small>{{f.int8n.tara}}</small>{{f.bill.buyer.tara}}</p>
-          <p ng-click="vm.openClientModal()"><small>{{f.int8n.banca}}</small>{{f.bill.buyer.banca}}</p>
-          <p ng-click="vm.openClientModal()"><small>{{f.int8n.cont}}</small>{{f.bill.buyer.cont}}</p>
         </div>
       </div>
-      <div class="pane details">
-        <div class="left">
-          <p class="title">
-            {{f.int8n.f_title}}
-          </p>
-          <p class="s-no">
-            <small>{{f.int8n.serie}}</small>{{f.bill.serie}}<small>{{f.int8n.numar}}</small>{{f.bill.numar}}
-          </p>
-          <p class="date">
-            <small>{{f.int8n.data}}</small>{{f.bill.data}}
-          </p>
-        </div>
-        <div class="right">
-        <span class="total">
-          {{f.int8n.total}}
-        </span>
-        <span class="worth">
-          {{f.bill.total + ' ' + f.bill.currency}}
-        </span>
-        </div>
-      </div>
-    </div>
-    <div class="table">
-      <div class="tab">
-        <div ng-repeat="task in f.bill.columns"
-             ng-style="{{f.getWidth($index)}}">
-          {{task}}
-        </div>
-      </div>
-      <div class="prod-row" ng-repeat="prod in f.bill.products">
-        <div class="name">
-          <p class="title">{{prod.title}}</p>
-          <p class="desc">{{prod.desc}}</p>
-        </div>
-        <div ng-repeat="line in prod.lines" ng-style="{{f.getLineWidth($index)}}">
-          {{line + ' ' + f.bill.currency}}</div>
-      </div>
-    </div>
-    <div class="jos">
-      <div class="foot">
-        <div class="left">
 
-        </div>
-        <div class="right">
+      <!-- Client -->
+      <div class="small-4 grid-block vertical">
+        <div class="grid-content" ng-click="vm.openSearchClientModal()" style="text-align: right"><a><h1>{{vm.int8n[vm.language].buyer}}</h1></a></div>
 
+        <div class="grid-block align-justify">
+          <!-- Labels Column-->
+          <div class="grid-block vertical">
+              <div class="grid-content"><small>{{vm.int8n[vm.language].name}}</small></div>
+              <div class="grid-content"><small>{{vm.int8n[vm.language].orc}}</small></div>
+              <div class="grid-content"><small>{{vm.int8n[vm.language].cif}}</small></div>
+              <div class="grid-content"><small>{{vm.int8n[vm.language].address}}</small></div>
+              <div class="grid-content"><small>{{vm.int8n[vm.language].city}}</small></div>
+              <div class="grid-content"><small>{{vm.int8n[vm.language].region}}</small></div>
+              <div class="grid-content"><small>{{vm.int8n[vm.language].country}}</small></div>
+              <div class="grid-content"><small>{{vm.int8n[vm.language].bank}}</small></div>
+              <div class="grid-content"><small>{{vm.int8n[vm.language].bankAccount}}</small></div>
+          </div>
+
+          <!-- Values Column-->
+          <div class="grid-block vertical" style="text-align:right">
+              <div class="grid-content">{{vm.client.name}}</div>
+              <div class="grid-content">{{vm.client.orc}}</div>
+              <div class="grid-content">{{vm.client.cif}}</div>
+              <div class="grid-content">{{vm.client.address}}</div>
+              <div class="grid-content">{{vm.client.city}}</div>
+              <div class="grid-content">{{vm.client.region}}</div>
+              <div class="grid-content">{{vm.client.country}}</div>
+              <div class="grid-content">{{vm.client.bank}}</div>
+              <div class="grid-content">{{vm.client.bankAccount}}</div>
+          </div>
         </div>
       </div>
     </div>
 
+    <!-- Detalii generale factura -->
+    <div class="grid-block align-justify informatii-factura-block">
+      <!-- Serie, Numar, Data -->
+      <div class="grid-block medium-7 vertical">
+        <div class="grid-block">
+          <div class="grid-content shrink"><h5>{{vm.int8n[vm.language].invoice}}</h5></div>
+        </div>
+        <div class="grid-block">
+        <div class="grid-block small-6">
+          <div class="grid-content shrink">
+            <label>
+              {{vm.int8n[vm.language].series}}
+              <input type="text" placeholder="SSW" ng-model="vm.f.series">
+            </label>
+          </div>
+        </div>
+        <div class="grid-block small-6">
+          <div class="grid-content shrink">
+            <label>
+              {{vm.int8n[vm.language].number}}
+              <input type="text" placeholder="001" ng-model="vm.f.number">
+            </label>
+          </div>
+        </div>
+        </div>
+        <div class="grid-block small-6">
+          <div class="grid-content shrink">
+            <label>
+              {{vm.int8n[vm.language].date}}
+              <input type="date" ng-model="vm.f.date">
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Suma -->
+      <div class="grid-block vertical align-right">
+        <!-- Black Box -->
+          <div class="grid-block small-12" style="background: black; margin-bottom: 1rem; height: 5rem; padding-top: 1rem">
+            <div class="grid-block align-justify">
+              <div class="grid-content">{{vm.int8n[vm.language].total}}</div>
+              <div class="grid-block small-8 align-right">
+                  <div class="grid-content shrink">{{vm.f.total}}</div>
+                  <div class="grid-content small-6">
+                    <select ng-model="vm.f.currency">
+                      <option value="RON">RON</option>
+                      <option value="USD">USD</option>
+                      <option value="EUR">EUR</option>
+                    </select>
+                  </div>
+              </div>
+            </div>
+          </div>
+      </div>
     </div>
- </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="grid-block vertical">
+    <div class="grid-block align-justify">
+      <div class="grid-content shrink">
+        {{vm.int8n[vm.language].product}}
+      </div>
+      <div class="grid-content shrink">
+        {{vm.int8n[vm.language].value}}
+      </div>
+    </div>
+    <div class="grid-block">
+      <div class="grid-content" style="overflow-x:hidden">
+        <section class="block-list">
+          <form>
+            <ul>
+
+              <li ng-repeat="prod in vm.f.products">
+                <div class="grid-block align-justify" style="margin-bottom: 1rem; margin-top: 1rem; margin-right: 0.5rem">
+
+                  <div class="grid-block vertical medium-7" style="margin-left: 0.5rem; ">
+                    <div class="grid-block small-12">
+                      <div class="grid-content" style="margin-bottom: 1rem;">
+                        <input type="text" ng-model="vm.f.products[$index].title" placeholder="{{vm.int8n[vm.language].productName}}"/>
+                      </div>
+                    </div>
+                    <div class="grid-block small-6">
+                      <div class="grid-content">
+                        <input type="text" ng-model="vm.f.products[$index].desc" placeholder="{{vm.int8n[vm.language].description}}"/>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="grid-block medium-4">
+                    <div class="grid-content">
+                      <label>
+                        <span class="inline-label">
+                          <input type="number" ng-model="vm.f.products[$index].amount" style="text-align: right" placeholder="{{vm.int8n[vm.language].amount}}"/>
+                          <span class="form-label">USD</span>
+                        </span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+            </ul>
+          </form>
+        </section>
+      </div>
+    </div>
+    <div class="grid-block">
+      <div class="grid-block">
+        <a class="button expand" ng-click="vm.addProduct()">{{vm.int8n[vm.language].addProduct}}</a>
+      </div>
+    </div>
+  </div>
+</div>

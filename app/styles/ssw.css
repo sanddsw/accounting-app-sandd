@@ -1,4 +1,24 @@
+.header {
+  padding: 1rem 4rem 0;
+  background: rgb(240, 244, 247);
+  font-weight: bold;
+}
 
+.furnizor-cumparator-block {
+  margin-top: 2.5rem;
+  font-size: 8px;
+  color: black;
+}
+
+.furnizor-cumparator-block small {
+  color: #999;
+}
+
+.furnizor-cumparator-block h1 {
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
+  color: #999;
+}
 @media print {
 body .sus {
   position: relative;
@@ -113,7 +133,6 @@ body .table {
 body .table .tab {
   height: 3rem;
   padding: 0 4rem;
-  background: rgb(241, 244, 247);
   display: -webkit-box;
 }
 body .table .tab div {
@@ -374,7 +393,5 @@ body .table .prod-row .name .desc {
 }
 body {
   background: white;
-  display: block;
   margin: auto;
-  box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
 }

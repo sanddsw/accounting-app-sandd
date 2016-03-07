@@ -10,27 +10,53 @@
 angular.module('facturiSswApp')
   .controller('AddCtrl', function ($clients, $scope, FoundationApi, ModalFactory, $timeout) {
     var vm = this;
-    vm.int8n = {
-      comData: 'Firma Clientului',
-      address: 'Adresa',
-      bank: 'Conturi bancare',
-      clients: 'Clienti',
-      addClient: 'Adauga Client',
-      noClient: 'Niciun Client Selectat'
+
+    vm.clients = $clients('list');
+    vm.client = {
+      banca: [{ nume: '', cont: ''}]
     };
-    angular.extend(vm, {
-      cli: {
-        setText: function(on) {
-          vm.cli.text = (on) ? vm.int8n.addClient : vm.int8n.noClient;
-        },
-        text: vm.int8n.noClient,
-        selected: false
+
+    vm.f = {
+      series: "",
+      number: "",
+      date: "",
+      currency: "",
+      seller: {
+        name: "SANDD SOFT WORKS SRL",
+        cif: "33535396",
+        orc: "J/25/235/2014",
+        address: "Smardan 26, bl. S4E, ap. 4",
+        city: "Dr. Tr. Severin",
+        region: "Mehedinti",
+        country: "Romania",
+        bank: "ING Bank",
+        bankAccount: "RO71INGB0000999901641743"
       },
-      clients: $clients('list'),
-      client: {
-        banca: [{ nume: '', cont: ''}]
-      },
-      openClientModal: function (client) {
+      products: [
+        { amount: 10, title: "Dezvoltare software la comanda", desc: "Conform contractului 01.01.2016" },
+        { amount: 25, title: "Dezvoltare software la comanda", desc: "Conform contractului 01.01.2016" }
+      ]
+    };
+    if (vm.f.date == "") {
+      vm.f.date = new Date();
+    }
+
+    vm.total = calculateTotal(vm.f.products);
+
+    function calculateTotal(products) {
+      if (products === undefined) return 0;
+      var s = 0;
+      for (var i=0; i < products.length; i++) {
+        s += products[i].amount;
+      }
+      return s;
+    }
+
+    vm.addProduct = function () {
+      vm.f.products.push({amount: "", title: "", desc: ""});
+    };
+
+    vm.openClientModal = function (client) {
         if(!client) client = vm.client;
         var modal = new ModalFactory({
           class: 'small',
@@ -60,8 +86,9 @@ angular.module('facturiSswApp')
           }
         });
         modal.activate();
-      },
-      openSearchClientModal: function () {
+      };
+
+    vm.openSearchClientModal = function () {
         var modal = new ModalFactory({
           class: 'small',
           overlay: true,
@@ -82,113 +109,47 @@ angular.module('facturiSswApp')
           }
         });
         modal.activate();
-      }
-    });
-
-    $scope.f = {
-      int8n: {
-        data: "Data",
-        f_title: "Factura Fiscala",
-        serie: "Serie",
-        numar: "Numar",
-        furnizor: "Furnizor",
-        cumparator: "Cumparator",
-        name: "Denumirea firmei",
-        cif: "Codul unic de identificare",
-        orc: "Numar ordin ORC",
-        sediu: "Sediul",
-        oras: "Oras",
-        judet: "Judet",
-        tara: "Tara",
-        banca: "Banca",
-        cont: "IBAN",
-        total: "TOTAL"
-      },
-      en: {
-        data: "Date",
-        f_title: "Invoice",
-        serie: "Series",
-        numar: "Number",
-        furnizor: "Seller",
-        cumparator: "Buyer",
-        name: "Company name",
-        cif: "Unique Registry Number",
-        orc: "ORC Registry Number",
-        sediu: "Headquarters",
-        oras: "City",
-        judet: "County/Region",
-        tara: "Country",
-        banca: "Bank",
-        cont: "IBAN",
-        total: "TOTAL"
-      },
-      bill: {
-        serie: "SSW",
-        numar: "001",
-        data: "02-09-2015",
-        currency: "RON",
-        columns: ["SERVICIU OFERIT", "VALOARE"],
-        total: 4e3,
-        seller: {
-          name: "Sandd Soft Works S.R.L.",
-          cif: "33535396",
-          orc: "J25/235/01.09.2014",
-          sediu: "Str Smardan 26, Bl S4E, Sc 1, Ap 4",
-          oras: "Drobeta Turnu Severin",
-          judet: "Mehedinti",
-          tara: "Romania",
-          banca: "ING Bank",
-          cont: "RO000PULA"
-        },
-        buyer: {
-          name: "Sandd Soft Works S.R.L.",
-          cif: "33535396",
-          orc: "J25/235/01.09.2014",
-          sediu: "Str Smardan 26, Bl S4E, Sc 1, Ap 4",
-          oras: "Drobeta Turnu Severin",
-          judet: "Mehedinti",
-          tara: "Romania",
-          banca: "ING Bank",
-          cont: "RO000PULA"
-        },
-        products: [{
-          lines: [4e3],
-          title: "Dezvoltare software la comanda",
-          desc: "Conform contractului 01.01.2016"
-        }, {lines: [4e3], title: "Dezvoltare software la comanda", desc: "Conform contractului 01.01.2016"}]
-      },
-      getWidth: function (a) {
-        return {width: 0 != a ? "" + (45 - 15 * (this.bill.columns.length - 2)) + "%" : "55%"}
-      },
-      getLineWidth: function (a) {
-        return {width: 0 != a ? "" + (45 - 15 * (this.bill.columns.length - 2)) + "%" : "45%"}
-      }
-    };
-
-    $scope.$watch('vm.client', function(client) {
-      if (client.nume === undefined && client.banca[0].nume === '') {
-        return;
-      }
-      var buyer = {
-        name: client.nume,
-        cif: client.cif,
-        orc: client.orc,
-        sediu: client.adresa,
-        oras: client.oras,
-        judet: client.judet,
-        tara: client.tara,
-        banca: client.banca[0].nume,
-        cont: client.banca[0].cont
       };
-      $scope.f.bill.buyer = buyer;
-    });
-
-
 
     function closeClientModal(modal) {
       modal.deactivate();
       $timeout(function() {
         modal.destroy();
       }, 1000);
+    }
+
+    $scope.$watch('vm.client', function(client) {
+      if (client.nume === undefined && client.banca[0].nume === '') {
+        return;
+      }
+      vm.f.buyer = client._id;
+    });
+
+    vm.language = 'ro';
+    vm.int8n = {
+      ro: {
+        date: "Data",
+        invoice: "Factura Fiscala",
+        series: "Serie",
+        number: "Numar",
+        seller: "Furnizor",
+        buyer: "Cumparator",
+        name: "Denumirea firmei",
+        cif: "Codul unic de identificare",
+        orc: "Numar ordin ORC",
+        address: "Sediul",
+        city: "Oras",
+        region: "Judet",
+        country: "Tara",
+        bank: "Banca",
+        bankAccount: "IBAN",
+        total: "TOTAL",
+        addProduct: "ADAUGA PRODUS",
+        description: "Descriere",
+        product: "Produs",
+        value: "Valoare",
+        amount: "Suma",
+        productName: "Nume Produs"
+      }
     }
   });
