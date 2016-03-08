@@ -23,7 +23,7 @@
               <ul>
                 <li ng-repeat="client in clients | filter: searchInput as results">
                   <input type="radio" id="{{client._id}}" name="client" ng-value="client">
-                  <label for="{{client._id}}" ng-click="set(client)">{{client.nume}}</label>
+                  <label for="{{client._id}}" ng-click="set(client)">{{client.name}}</label>
                 </li>
               </ul>
             </form>

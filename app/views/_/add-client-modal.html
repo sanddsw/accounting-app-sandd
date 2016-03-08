@@ -6,7 +6,7 @@
     <div class="grid-block vertical modal-content">
       <div class="grid-block">
         <div class="grid-content">
-          <input type="text" placeholder="Nume firma" ng-model="client.nume"/>
+          <input type="text" placeholder="Nume firma" ng-model="client.name"/>
         </div>
       </div>
 
@@ -25,24 +25,24 @@
 
       <div class="grid-block">
         <div class="grid-content">
-          <input type="text" placeholder="Adresa" ng-model="client.sediu"/>
+          <input type="text" placeholder="Adresa" ng-model="client.address"/>
         </div>
       </div>
 
       <div class="grid-block">
         <div class="grid-block">
           <div class="grid-content">
-            <input type="text" placeholder="Oras" ng-model="client.oras"/>
+            <input type="text" placeholder="Oras" ng-model="client.city"/>
           </div>
         </div>
         <div class="grid-block">
           <div class="grid-content">
-            <input type="text" placeholder="Tara" ng-model="client.tara"/>
+            <input type="text" placeholder="Tara" ng-model="client.country"/>
           </div>
         </div>
         <div class="grid-block">
           <div class="grid-content">
-            <input type="text" placeholder="Judet" ng-model="client.judet"/>
+            <input type="text" placeholder="Judet" ng-model="client.region"/>
           </div>
         </div>
       </div>
@@ -53,16 +53,16 @@
         </div>
       </div>
 
-      <div class="grid-block" ng-repeat="bankAcc in client.banca">
+      <div class="grid-block" ng-repeat="bankAcc in client.banks">
         <div class="medium-4 grid-block">
           <div class="grid-content noscroll">
-            <input type="text" placeholder="Banca" ng-model="bankAcc.nume"/>
+            <input type="text" placeholder="Banca" ng-model="bankAcc.name"/>
           </div>
         </div>
         <div class="grid-block">
           <div class="grid-content noscroll">
             <span class="inline-label">
-            <input type="text" placeholder="Cont" ng-model="bankAcc.cont"/>
+            <input type="text" placeholder="Cont" ng-model="bankAcc.account"/>
             <a class="button" ng-click="removeAccount($index)"><i class="fa fa-minus"></i></a>
             </span>
           </div>
@@ -70,7 +70,7 @@
       </div>
       <div class="grid-block">
         <div class="grid-content">
-          <a class="button expand" ng-click="addAccount()" ng-disabled="client.banca.length > 2">Adauga Banca</a>
+          <a class="button expand" ng-click="addAccount()" ng-disabled="client.abnks.length > 2">Adauga Banca</a>
         </div>
       </div>
 

@@ -55,14 +55,14 @@
           <!-- Labels Column-->
           <div class="grid-block vertical">
               <div class="grid-content"><small>{{vm.int8n[vm.language].name}}</small></div>
-              <div class="grid-content"><small>{{vm.int8n[vm.language].orc}}</small></div>
-              <div class="grid-content"><small>{{vm.int8n[vm.language].cif}}</small></div>
-              <div class="grid-content"><small>{{vm.int8n[vm.language].address}}</small></div>
-              <div class="grid-content"><small>{{vm.int8n[vm.language].city}}</small></div>
-              <div class="grid-content"><small>{{vm.int8n[vm.language].region}}</small></div>
-              <div class="grid-content"><small>{{vm.int8n[vm.language].country}}</small></div>
-              <div class="grid-content"><small>{{vm.int8n[vm.language].bank}}</small></div>
-              <div class="grid-content"><small>{{vm.int8n[vm.language].bankAccount}}</small></div>
+              <div class="grid-content" ng-show="vm.client.orc"><small>{{vm.int8n[vm.language].orc}}</small></div>
+              <div class="grid-content" ng-show="vm.client.cif"><small>{{vm.int8n[vm.language].cif}}</small></div>
+              <div class="grid-content" ng-show="vm.client.address"><small>{{vm.int8n[vm.language].address}}</small></div>
+              <div class="grid-content" ng-show="vm.client.city"><small>{{vm.int8n[vm.language].city}}</small></div>
+              <div class="grid-content" ng-show="vm.client.region"><small>{{vm.int8n[vm.language].region}}</small></div>
+              <div class="grid-content" ng-show="vm.client.country"><small>{{vm.int8n[vm.language].country}}</small></div>
+              <div class="grid-content" ng-show="vm.client.bank"><small>{{vm.int8n[vm.language].bank}}</small></div>
+              <div class="grid-content" ng-show="vm.client.bankAccount"><small>{{vm.int8n[vm.language].bankAccount}}</small></div>
           </div>
 
           <!-- Values Column-->
@@ -119,11 +119,11 @@
       <!-- Suma -->
       <div class="grid-block vertical align-right">
         <!-- Black Box -->
-          <div class="grid-block small-12" style="background: black; margin-bottom: 1rem; height: 5rem; padding-top: 1rem">
+          <div class="grid-block small-12" style="background: black; margin-bottom: 1rem; height: 5rem; padding-top: 1rem; color: white">
             <div class="grid-block align-justify">
               <div class="grid-content">{{vm.int8n[vm.language].total}}</div>
               <div class="grid-block small-8 align-right">
-                  <div class="grid-content shrink">{{vm.f.total}}</div>
+                  <div class="grid-content shrink">{{vm.total}}</div>
                   <div class="grid-content small-6">
                     <select ng-model="vm.f.currency">
                       <option value="RON">RON</option>
@@ -140,7 +140,7 @@
 
   <!-- BODY -->
   <div class="grid-block vertical">
-    <div class="grid-block align-justify">
+    <div class="grid-block align-justify" style="background: rgb(240, 244, 247);">
       <div class="grid-content shrink">
         {{vm.int8n[vm.language].product}}
       </div>
@@ -174,10 +174,13 @@
                     <div class="grid-content">
                       <label>
                         <span class="inline-label">
-                          <input type="number" ng-model="vm.f.products[$index].amount" style="text-align: right" placeholder="{{vm.int8n[vm.language].amount}}"/>
+                          <input type="number" ng-model="vm.f.products[$index].amount" ng-change="vm.recalculateTotal()" style="text-align: right" placeholder="{{vm.int8n[vm.language].amount}}"/>
                           <span class="form-label">USD</span>
                         </span>
                       </label>
+                    </div>
+                    <div class="grid-content" style="text-align: right">
+                      <i ng-click="vm.removeProduct($index)" class="fa fa-2x fa-trash-o"></i>
                     </div>
                   </div>
                 </div>
@@ -193,5 +196,9 @@
         <a class="button expand" ng-click="vm.addProduct()">{{vm.int8n[vm.language].addProduct}}</a>
       </div>
     </div>
+  </div>
+
+  <div class="grid-block">
+      <a class="button expand" ng-click="vm.saveFactura()">{{vm.int8n[vm.language].saveInvoice}}</a>
   </div>
 </div>
