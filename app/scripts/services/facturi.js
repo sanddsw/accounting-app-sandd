@@ -39,10 +39,13 @@ angular.module('facturiSswApp')
       return undefined;
     };
 
-    this.push = function(factura) {
+    this.push = function(factura, callbackWin) {
       $http.post(url, factura).success(function(data) {
         if(data._id) {
           facturi.push(data);
+          if(callbackWin) {
+            callbackWin(data)
+          }
         }
       });
     };

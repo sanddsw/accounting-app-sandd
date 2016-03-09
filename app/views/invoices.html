@@ -1,0 +1,27 @@
+<div class="small-12 large-8 grid-block vertical large-centered">
+  <div class="grid-block" style="margin-top: 2rem">
+    <div class="grid-content">
+      <table>
+        <thead>
+        <tr>
+          <th>Client</th>
+          <th width="200">Data</th>
+          <th width="150" style="text-align:right">Pret</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="factura in facturi | orderBy : 'date' as sortedBons">
+          <td>{{factura.buyer.name}}</td>
+          <td>{{factura.date | date:'MM/dd/yyyy'}}</td>
+          <td style="text-align:right">{{factura.total}} {{factura.currency}}&nbsp&nbsp&nbsp&nbsp<i ng-click="removeBon($index)" class="fa fa-trash-o"></i></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div id="docs-homescreen-add" ng-click="newInvoice()">
+  <div class="docs-homescreen-icon docs-homescreen-icon-medium">
+    <i class="fa fa-plus"></i>
+  </div>
+</div>

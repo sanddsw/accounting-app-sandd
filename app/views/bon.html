@@ -1,0 +1,49 @@
+<div class="small-12 large-8 grid-block vertical large-centered">
+  <form name="form" novalidate>
+    <div class="grid-block">
+      <div class="grid-content medium-5 columns">
+        <label>Produs
+          <input type="text" placeholder="Ex. Benzina, Diverse birou" ng-model="bonProducts" required>
+        </label>
+      </div>
+      <div class="grid-content">
+        <label>Data
+          <input type="date" placeholder="02/04/2016" ng-model="bonDate" max="{{maxDate | date:'yyyy-MM-dd'}}" required>
+        </label>
+      </div>
+      <div class="grid-content">
+        <label>Pret
+          <input type="number" placeholder="30.89" ng-model="bonAmount" required>
+        </label>
+      </div>
+      <div class="grid-content shrink">
+        <button type="submit" class="button expand" ng-click="saveBon()" ng-disabled="!form.$valid">Add</button>
+      </div>
+    </div>
+  </form>
+  <div class="grid-block">
+    <div class="grid-content">
+      <table>
+        <thead>
+        <tr>
+          <th>Produs</th>
+          <th width="200">Data</th>
+          <th width="150" style="text-align:right">Pret</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="bon in bonuri | orderBy : 'date' as sortedBons">
+          <td>{{bon.products}}</td>
+          <td>{{bon.date | date:'MM/dd/yyyy'}}</td>
+          <td style="text-align:right">{{bon.amount}}&nbsp&nbsp&nbsp&nbsp<i ng-click="removeBon($index)" class="fa fa-trash-o"></i></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div id="docs-homescreen-add">
+  <div class="docs-homescreen-icon docs-homescreen-icon-medium">
+    <i ng-click="removeBon($index)" class="fa fa-plus"></i>
+  </div>
+</div>

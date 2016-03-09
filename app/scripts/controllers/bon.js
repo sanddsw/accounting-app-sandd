@@ -8,7 +8,7 @@
  * Controller of the facturiSswApp
  */
 angular.module('facturiSswApp')
-  .controller('AddBonCtrl', function ($bonuri, $scope) {
+  .controller('bonController', function ($bonuri, $scope) {
     $scope.bonDate = new Date();
     $scope.maxDate =new Date();
     $scope.maxDate = $scope.maxDate.setDate($scope.maxDate.getDate() + 1); // Used in form validation
@@ -22,5 +22,9 @@ angular.module('facturiSswApp')
         amount: this.bonAmount
       };
       $bonuri.push(bon);
+    };
+
+    $scope.removeBon = function (index) {
+      console.log("Should delete bon " + index)
     }
   });

@@ -24,25 +24,27 @@ angular
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/Facturi', {
-        templateUrl: 'views/list.html',
-        controller: 'ListCtrl as facturi'
-        //resolve: {
-        //  postPromise: dbPromise('videos')
-        //}
-      })
-      .when('/Adauga', {
-        templateUrl: 'views/add.html',
-        controller: 'AddCtrl as vm',
+      .when('/Facturi/Adauga', {
+        templateUrl: 'views/add_invoice.html',
+        controller: 'invoiceAddController as vm',
         resolve: {
           postPromise: ['$clients', function($clients) {
             return $clients('init');
           }]
         }
       })
-      .when('/AddBon', {
-        templateUrl: 'views/add_bon.html',
-        controller: 'AddBonCtrl',
+      .when('/Facturi', {
+        templateUrl: 'views/invoices.html',
+        controller: 'invoiceController',
+        resolve: {
+          postPromise: ['$facturi', function($facturi) {
+            return $facturi.init();
+          }]
+        }
+      })
+      .when('/Bon', {
+        templateUrl: 'views/bon.html',
+        controller: 'bonController',
         resolve: {
           postPromise: ['$bonuri', function ($bonuri) {
             return $bonuri.init();

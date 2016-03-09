@@ -40,6 +40,9 @@ module.exports = function(config) {
       'bower_components/foundation-apps/dist/js/foundation-apps-templates.js',
       'bower_components/what-input/what-input.js',
       'bower_components/foundation-sites/dist/foundation.js',
+      'bower_components/highcharts/highcharts.js',
+      'bower_components/highcharts/highcharts-more.js',
+      'bower_components/highcharts/modules/exporting.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",

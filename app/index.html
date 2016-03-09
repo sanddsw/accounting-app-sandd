@@ -30,15 +30,8 @@
   <div>
     <div class="top-bar-left">
       <ul class="dropdown menu" data-dropdown-menu>
-        <li>
-          <a href="">Facturi</a>
-          <ul class="menu vertical">
-            <li><a href="#/Adauga">Adauga</a></li>
-            <li><a href="#/Facturi">Lista</a></li>
-          </ul>
-        </li>
-        <li><a href="#/Bill">Dorutzu</a></li>
-        <li><a href="">Caputzu</a></li>
+        <li><a href="#/Facturi">Facturi</a></li>
+        <li><a href="#/Bon">Bonuri</a></li>
       </ul>
     </div>
     <div class="top-bar-right">
@@ -72,15 +65,18 @@
 <script src="bower_components/foundation-apps/dist/js/foundation-apps-templates.js"></script>
 <script src="bower_components/what-input/what-input.js"></script>
 <script src="bower_components/foundation-sites/dist/foundation.js"></script>
+<script src="bower_components/highcharts/highcharts.js"></script>
+<script src="bower_components/highcharts/highcharts-more.js"></script>
+<script src="bower_components/highcharts/modules/exporting.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
 <script src="scripts/app.js"></script>
 <script src="scripts/controllers/main.js"></script>
-<script src="scripts/controllers/list.js"></script>
-<script src="scripts/controllers/add.js"></script>
-<script src="scripts/controllers/add_bon.js"></script>
+<script src="scripts/controllers/add_invoice.js"></script>
+<script src="scripts/controllers/invoice.js"></script>
+<script src="scripts/controllers/bon.js"></script>
 <script>
   $(document.body).foundation();
 </script>

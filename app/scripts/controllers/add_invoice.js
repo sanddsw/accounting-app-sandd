@@ -8,7 +8,7 @@
  * Controller of the facturiSswApp
  */
 angular.module('facturiSswApp')
-  .controller('AddCtrl', function ($facturi, $clients, $scope, FoundationApi, ModalFactory, $timeout) {
+  .controller('invoiceAddController', function ($facturi, $clients, $scope, FoundationApi, ModalFactory, $timeout, $location) {
     var vm = this;
 
     vm.language = 'ro';
@@ -150,6 +150,7 @@ angular.module('facturiSswApp')
 
     vm.recalculateTotal = function() {
       vm.total = calculateTotal(vm.f.products);
+      f.total = vm.total;
     };
 
     // TODO: add some form validation to ensure we have minimum data required
@@ -157,7 +158,9 @@ angular.module('facturiSswApp')
       if (vm.f._id !== undefined) {
         $facturi.update(vm.f);
       } else {
-        $facturi.push(vm.f);
+        $facturi.push(vm.f, function(data) {
+          $location.path('/Facturi');
+        });
       }
     };
 
