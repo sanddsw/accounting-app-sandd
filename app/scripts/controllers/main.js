@@ -9,6 +9,7 @@
  */
 angular.module('facturiSswApp')
   .controller('MainCtrl', function () {
+    
     Highcharts.chart('container', {
 
       xAxis: {
