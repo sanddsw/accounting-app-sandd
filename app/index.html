@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="styles/main.css">
   <link rel="stylesheet" href="styles/ssw.css">
   <link rel="stylesheet" href="styles/add.css">
+  <link rel="stylesheet" href="styles/login.css">
   <link rel="stylesheet" href="styles/vendor.css">
   <!-- endbuild -->
 </head>
@@ -25,25 +26,25 @@
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
 
-<div class="top-bar">
-  <div class="top-bar-title">SANDD SOFT WORKS</div>
-  <div>
-    <div class="top-bar-left">
-      <ul class="dropdown menu" data-dropdown-menu>
-        <li><a href="#/Facturi">Facturi</a></li>
-        <li><a href="#/Bon">Bonuri</a></li>
-      </ul>
-    </div>
-    <div class="top-bar-right">
-      <ul class="menu">
-        <li><input type="search" placeholder="Search"></li>
-        <li><button type="button" class="button">Search</button></li>
-      </ul>
-    </div>
-  </div>
-</div>
+<!--<div class="top-bar">-->
+  <!--<div class="top-bar-title">SANDD SOFT WORKS</div>-->
+  <!--<div>-->
+    <!--<div class="top-bar-left">-->
+      <!--<ul class="dropdown menu" data-dropdown-menu>-->
+        <!--<li><a href="#/Facturi">Facturi</a></li>-->
+        <!--<li><a href="#/Bon">Bonuri</a></li>-->
+      <!--</ul>-->
+    <!--</div>-->
+    <!--<div class="top-bar-right">-->
+      <!--<ul class="menu">-->
+        <!--<li><input type="search" placeholder="Search"></li>-->
+        <!--<li><button type="button" class="button">Search</button></li>-->
+      <!--</ul>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
 
-<div ng-view class="grid-frame" style="height:auto"></div>
+<div ui-view class="grid-frame" style="height:auto"></div>
 
 <!-- build:js(.) scripts/vendor.js -->
 <!-- bower:js -->
@@ -54,7 +55,6 @@
 <script src="bower_components/angular-resource/angular-resource.js"></script>
 <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
 <script src="bower_components/angular-touch/angular-touch.js"></script>
-<script src="bower_components/angular-route/angular-route.js"></script>
 <script src="bower_components/viewport-units-buggyfill/viewport-units-buggyfill.js"></script>
 <script src="bower_components/viewport-units-buggyfill/viewport-units-buggyfill.hacks.js"></script>
 <script src="bower_components/tether/tether.js"></script>
@@ -83,6 +83,11 @@
 <script src="scripts/services/clients.js"></script>
 <script src="scripts/services/bon.js"></script>
 <script src="scripts/services/facturi.js"></script>
+<script src="scripts/controllers/login.js"></script>
+<script src="scripts/services/request.js"></script>
+<script src="scripts/services/login.js"></script>
+<script src="scripts/directives/noanimate.js"></script>
+<script src="scripts/services/init.js"></script>
 <!-- endbuild -->
 </body>
 </html>
