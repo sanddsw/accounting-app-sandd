@@ -26,8 +26,23 @@ angular.module('facturiSswApp')
       return facturi;
     };
 
-    this.factura = function(index) {
-      return facturi[index];
+    this.download = function(id, language, user, callback) {
+      return $http.get(url + "get/" + user + "/" + language + "/" + id, {responseType:'blob'}).success(function(data) {
+        if (callback) {
+          callback(data);
+        }
+      });
+    };
+
+    this.delete = function(id, callbackWin) {
+      for(var i = 0, len = facturi.length; i < len; i++) {
+        if(facturi[i]._id == id) {
+          $http.delete(url + id).success(function() {
+            facturi.splice(i,1);
+            callbackWin(facturi)
+          });
+        }
+      }
     };
 
     this.getById = function(id) {

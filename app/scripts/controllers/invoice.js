@@ -12,7 +12,16 @@ angular.module('facturiSswApp')
     $scope.facturi = $facturi.list();
 
     $scope.removeFactura = function (index) {
-      console.log("Should delete factura " + index)
+      $facturi.delete($scope.facturi[index]._id, function(){
+        $scope.facturi.splice(index, 1);
+      });
+    };
+
+    $scope.downloadFactura = function (index) {
+      $facturi.download($scope.facturi[index]._id, "en", "doru", function(blob) {
+        var url = (window.URL || window.webkitURL).createObjectURL(blob);
+        window.open(url, '_blank');
+      });
     };
 
     $scope.newInvoice = function () {

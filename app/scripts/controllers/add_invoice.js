@@ -150,7 +150,7 @@ angular.module('facturiSswApp')
 
     vm.recalculateTotal = function() {
       vm.total = calculateTotal(vm.f.products);
-      f.total = vm.total;
+      vm.f.total = vm.total;
     };
 
     // TODO: add some form validation to ensure we have minimum data required
