@@ -8,13 +8,16 @@
  * Service in the facturiSswApp.
  */
 angular.module('facturiSswApp')
-  .service('$init', ['$login', '$state', '$rootScope', function ($login, $state, $rootScope) {
+  .service('$init', ['$loginService', '$state', '$rootScope', function ($loginService, $state, $rootScope) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
     return function() {
-      $state.go(($login.isLogged()) ? 'home' : 'login');
+      $state.go(($loginService.isLogged()) ? 'main.home' : 'login');
       $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams, options){
-        if(!$login.isLogged()) $state.go('login');
+        if(!$loginService.isLogged()) {
+          event.preventDefault();
+          $state.go('login')
+        }
       })
     }
   }]);

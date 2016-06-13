@@ -8,7 +8,7 @@
  * Service in the facturiSswApp.
  */
 angular.module('facturiSswApp')
-  .factory('$login', ['$request', '$cookies', '$q', function ($request, $cookies, $q) {
+  .factory('$loginService', ['$request', '$cookies', '$q', function ($request, $cookies, $q) {
     var loggedIn;
 
     return {

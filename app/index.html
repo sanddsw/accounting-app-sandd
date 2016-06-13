@@ -22,29 +22,8 @@
   <!-- endbuild -->
 </head>
 <body ng-app="facturiSswApp">
-<!--[if lte IE 8]>
-<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-<![endif]-->
 
-<!--<div class="top-bar">-->
-  <!--<div class="top-bar-title">SANDD SOFT WORKS</div>-->
-  <!--<div>-->
-    <!--<div class="top-bar-left">-->
-      <!--<ul class="dropdown menu" data-dropdown-menu>-->
-        <!--<li><a href="#/Facturi">Facturi</a></li>-->
-        <!--<li><a href="#/Bon">Bonuri</a></li>-->
-      <!--</ul>-->
-    <!--</div>-->
-    <!--<div class="top-bar-right">-->
-      <!--<ul class="menu">-->
-        <!--<li><input type="search" placeholder="Search"></li>-->
-        <!--<li><button type="button" class="button">Search</button></li>-->
-      <!--</ul>-->
-    <!--</div>-->
-  <!--</div>-->
-<!--</div>-->
-
-<div ui-view class="grid-frame" style="height:auto"></div>
+  <div ui-view></div>
 
 <!-- build:js(.) scripts/vendor.js -->
 <!-- bower:js -->
@@ -73,21 +52,23 @@
 
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
 <script src="scripts/app.js"></script>
-<script src="scripts/controllers/main.js"></script>
-<script src="scripts/controllers/add_invoice.js"></script>
-<script src="scripts/controllers/invoice.js"></script>
-<script src="scripts/controllers/bon.js"></script>
+<script src="scripts/home/HomeController.js"></script>
+<script src="scripts/invoice/AddInvoiceController.js"></script>
+<script src="scripts/invoice/InvoicesController.js"></script>
+<script src="scripts/receipt/ReceiptsController.js"></script>
+<script src="scripts/shared/controllers/MainController.js"></script>
 <script>
   $(document.body).foundation();
 </script>
-<script src="scripts/services/clients.js"></script>
-<script src="scripts/services/bon.js"></script>
-<script src="scripts/services/facturi.js"></script>
-<script src="scripts/controllers/login.js"></script>
-<script src="scripts/services/request.js"></script>
-<script src="scripts/services/login.js"></script>
-<script src="scripts/directives/noanimate.js"></script>
-<script src="scripts/services/init.js"></script>
+
+<script src="scripts/receipt/ReceiptsService.js"></script>
+<script src="scripts/invoice/InvoicesService.js"></script>
+<script src="scripts/login/LoginController.js"></script>
+<script src="scripts/login/LoginService.js"></script>
+<script src="scripts/shared/directives/noanimate.js"></script>
+<script src="scripts/shared/services/request.js"></script>
+<script src="scripts/shared/services/clients.js"></script>
+<script src="scripts/shared/services/init.js"></script>
 <!-- endbuild -->
 </body>
 </html>

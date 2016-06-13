@@ -19,43 +19,43 @@ angular
     'ngTouch'
   ])
   .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
-    //
-    // For any unmatched url, redirect to /state1
-    $urlRouterProvider.otherwise("/login");
-    //
+
+    // For any unmatched url, redirect to login
+    // $urlRouterProvider.otherwise("/login");
+
     // Now set up the states
     $stateProvider
-      .state('home', {
+      .state('login', {
+        url: "login",
+        templateUrl: 'views/login.html',
+        controller: 'LoginController as model'
+      })
+      .state('main', {
+        abstract: true,
         url: "/",
         templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        controller: 'MainController'
       })
-      .state('login', {
-        url: "/login",
-        templateUrl: 'views/login.html',
-        controller: 'LoginCtrl as vm'
+      .state('main.home', {
+        url: "home",
+        templateUrl: 'views/home.html',
+        controller: 'HomeController'
+      })
+      .state('main.invoices', {
+        url: "invoices",
+        templateUrl: 'views/invoices.html',
+        controller: 'InvoiceController',
+        resolve: {
+          postPromise: ['$invoicesService', function($facturi) {
+            return $facturi.init();
+          }]
+        }
+      })
+      .state('main.facturi.adauga', {
+        url: "invoices/add",
+        templateUrl: 'views/add_invoice.html',
+        controller: 'AddInvoiceController as vm'
       });
-
-
-    
-      // .state('state1.list', {
-      //   url: "/list",
-      //   templateUrl: "partials/state1.list.html",
-      //   controller: function($scope) {
-      //     $scope.items = ["A", "List", "Of", "Items"];
-      //   }
-      // })
-      // .state('state2', {
-      //   url: "/state2",
-      //   templateUrl: "partials/state2.html"
-      // })
-      // .state('state2.list', {
-      //   url: "/list",
-      //   templateUrl: "partials/state2.list.html",
-      //   controller: function($scope) {
-      //     $scope.things = ["A", "Set", "Of", "Things"];
-      //   }
-      // });
   }])
   .run(['$init', function($init) {
     $init();
@@ -92,9 +92,5 @@ angular
   //         }]
   //       }
   //     })
-  //     .when('/Login', {
-  //       templateUrl: 'views/login.html',
-  //       controller: 'loginCtrl as vm'
-  //     });
   // }
   // ]);

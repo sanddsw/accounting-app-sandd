@@ -1,1 +1,18 @@
-<div id="container" style="width:100%; height:400px;"></div>
+<div class="top-bar">
+  <div class="top-bar-title">SANDD SOFT WORKS</div>
+  <div>
+    <div class="top-bar-left">
+      <ul class="dropdown menu" data-dropdown-menu>
+        <li><a ng-click="goToInvoices()">Facturi</a></li>
+        <li><a ng-click="goToInvoices()">Bonuri</a></li>
+      </ul>
+    </div>
+    <div class="top-bar-right">
+      <ul class="menu">
+        <li><input type="search" placeholder="Search"></li>
+        <li><button type="button" class="button">Search</button></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div ui-view class="grid-frame"></div>

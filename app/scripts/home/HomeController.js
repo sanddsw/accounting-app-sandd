@@ -8,7 +8,7 @@
  * Controller of the facturiSswApp
  */
 angular.module('facturiSswApp')
-  .controller('MainCtrl', function () {
+  .controller('HomeController', function () {
     
     Highcharts.chart('container', {
 

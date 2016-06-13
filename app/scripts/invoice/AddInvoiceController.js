@@ -8,7 +8,7 @@
  * Controller of the facturiSswApp
  */
 angular.module('facturiSswApp')
-  .controller('invoiceAddController', function ($facturi, $clients, $scope, FoundationApi, ModalFactory, $timeout, $location) {
+  .controller('AddInvoiceController', function ($facturi, $clients, $scope, FoundationApi, ModalFactory, $timeout, $location) {
     var vm = this;
 
     vm.language = 'ro';

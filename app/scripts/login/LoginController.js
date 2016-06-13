@@ -8,16 +8,16 @@
  * Controller of the facturiSswApp
  */
 angular.module('facturiSswApp')
-  .controller('LoginCtrl', function ($http, $login, $state) {
-    var vm = this;
-    angular.extend(vm, {
+  .controller('LoginController', function ($http, $loginService, $state) {
+    var model = this;
+    angular.extend(model, {
       isChecking: false,
       login: function() {
-        vm.isChecking = true;
-        $login.make(vm.user).then(function(data) {
-          vm.isChecking = false;
+        model.isChecking = true;
+        $loginService.make(model.user).then(function(data) {
+          model.isChecking = false;
           if(data.success) {
-            $state.go('home');
+            $state.go('main.home');
           }
         })
       }

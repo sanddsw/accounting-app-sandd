@@ -8,7 +8,7 @@
  * Service in the facturiSswApp.
  */
 angular.module('facturiSswApp')
-  .service('$facturi', ['$http', function ($http) {
+  .service('$invoicesService', ['$http', function ($http) {
     var url = "http://localhost:8080/facturi/";
     var facturi = [];
 
