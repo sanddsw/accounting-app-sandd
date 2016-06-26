@@ -19,7 +19,7 @@ angular.module('facturiSswApp')
           if(data.success) {
             $state.go('main.home');
           }
-        })
+        });
       }
     });
   });

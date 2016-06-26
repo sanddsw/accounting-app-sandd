@@ -16,12 +16,28 @@ angular
     'ngResource',
     'ui.router',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'pascalprecht.translate',
+    'tmh.dynamicLocale'
   ])
-  .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+  .constant('LOCALES', {
+    'locales': {
+      'ro_RO': 'Romanian',
+      'en_US': 'English'
+    },
+    'preferredLocale': 'en_US'
+  })
+  .config(['$stateProvider','tmhDynamicLocaleProvider', '$translateProvider', function($stateProvider, tmhDynamicLocaleProvider, $translateProvider) {
+    tmhDynamicLocaleProvider.localeLocationPattern('/bower_components/angular-i18n/angular-locale_{{locale}}.js');
 
-    // For any unmatched url, redirect to login
-    // $urlRouterProvider.otherwise("/login");
+    $translateProvider.useStaticFilesLoader({
+      prefix: 'resources/locale-',// path to translations files
+      suffix: '.json'// suffix, currently- extension of the translations
+    });
+    $translateProvider.preferredLanguage('en_US');// is applied on first load
+    $translateProvider.useLocalStorage();
+
+
 
     // Now set up the states
     $stateProvider
@@ -34,7 +50,12 @@ angular
         abstract: true,
         url: "/",
         templateUrl: 'views/main.html',
-        controller: 'MainController'
+        controller: 'MainController',
+        onEntry: ['$state', '$loginService', function ($state, $loginService) {
+          if(!$loginService.isLogged()) {
+            $state.go('login');
+          }
+        }]
       })
       .state('main.home', {
         url: "home",
@@ -46,43 +67,24 @@ angular
         templateUrl: 'views/invoices.html',
         controller: 'InvoiceController',
         resolve: {
-          postPromise: ['$invoicesService', function($facturi) {
-            return $facturi.init();
-          }]
+            invoices: function ($invoicesService) {
+                return $invoicesService.list().then(function (result) {
+                    return result.data;
+                });
+            }
         }
       })
-      .state('main.facturi.adauga', {
+      .state('main.invoice_add', {
         url: "invoices/add",
         templateUrl: 'views/add_invoice.html',
-        controller: 'AddInvoiceController as vm'
+        controller: 'AddInvoiceController as vm',
       });
   }])
+
   .run(['$init', function($init) {
     $init();
   }]);
 
-
-
-  // .config(['$routeProvider', function($routeProvider) {
-  //   $routeProvider
-  //     .when('/Facturi/Adauga', {
-  //       templateUrl: 'views/add_invoice.html',
-  //       controller: 'invoiceAddController as vm',
-  //       resolve: {
-  //         postPromise: ['$clients', function($clients) {
-  //           return $clients('init');
-  //         }]
-  //       }
-  //     })
-  //     .when('/Facturi', {
-  //       templateUrl: 'views/invoices.html',
-  //       controller: 'invoiceController',
-  //       resolve: {
-  //         postPromise: ['$facturi', function($facturi) {
-  //           return $facturi.init();
-  //         }]
-  //       }
-  //     })
   //     .when('/Bon', {
   //       templateUrl: 'views/bon.html',
   //       controller: 'bonController',

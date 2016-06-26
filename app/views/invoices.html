@@ -4,20 +4,22 @@
       <table>
         <thead>
         <tr>
-          <th>Client</th>
-          <th width="200">Data</th>
-          <th width="150" style="text-align:right">Pret</th>
+          <th width="100">{{"views.invoice.series" | translate}}</th>
+          <th>{{"views.invoice.buyer" | translate}}</th>
+          <th width="200">{{"views.invoice.date" | translate}}</th>
+          <th width="150" style="text-align:right">{{"views.invoice.amount" | translate}}</th>
           <td style="text-align:right">Actiuni</td>
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="factura in facturi | orderBy : 'date' as sortedBons">
+        <tr ng-repeat="factura in facturi | orderBy : 'number' as sortedBons">
+          <td>{{factura.series}} {{factura.number}}</td>
           <td>{{factura.buyer.name}}</td>
-          <td>{{factura.date | date:'MM/dd/yyyy'}}</td>
+          <td>{{factura.date | date:'dd/MM/yyyy'}}</td>
           <td style="text-align:right">{{factura.total}} {{factura.currency}}</td>
           <td style="text-align:right">
-            <i ng-click="removeFactura($index)" class="fa fa-trash-o"></i>
-            <i ng-click="downloadFactura($index)" class="fa fa-download"></i>
+            <i ng-click="removeFactura(factura)" class="fa fa-trash-o"></i>
+            <i ng-click="downloadFactura(factura)" class="fa fa-download"></i>
           </td>
         </tr>
         </tbody>

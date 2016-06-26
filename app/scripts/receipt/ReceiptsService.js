@@ -15,7 +15,9 @@ angular.module('facturiSswApp')
     var bonuri = [];
 
     this.init = function(callback) {
-      if(bonuri.length > 0) return;
+      if(bonuri.length > 0) {
+          return;
+      }
       return $http.get(url).success(function(data) {
         bonuri = data;
         if (callback) {
@@ -34,7 +36,7 @@ angular.module('facturiSswApp')
 
     this.getById = function(id) {
       for(var i = 0, len = bonuri.length; i < len; i++) {
-        if(bonuri[i]._id == id) {
+        if(bonuri[i]._id === id) {
           return bonuri[i];
         }
       }

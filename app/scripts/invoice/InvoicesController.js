@@ -8,23 +8,23 @@
  * Controller of the facturiSswApp
  */
 angular.module('facturiSswApp')
-  .controller('InvoiceController', function ($invoicesService, $scope, $location) {
-    $scope.facturi = $invoicesService.list();
+  .controller('InvoiceController', function ($invoicesService, $scope, $location, $state, invoices) {
+    $scope.facturi = invoices;
 
-    $scope.removeFactura = function (index) {
-      $invoicesService.delete($scope.facturi[index]._id, function(){
-        $scope.facturi.splice(index, 1);
+    $scope.removeFactura = function (invoice) {
+      $invoicesService.delete(invoice._id).then(function(){
+        $scope.facturi.splice($scope.facturi.indexOf(invoice), 1);
       });
     };
 
-    $scope.downloadFactura = function (index) {
-      $invoicesService.download($scope.facturi[index]._id, "en", "doru", function(blob) {
-        var url = (window.URL || window.webkitURL).createObjectURL(blob);
+    $scope.downloadFactura = function (invoice) {
+      $invoicesService.download(invoice._id, "en", "doru").then(function(res) {
+        var url = (window.URL || window.webkitURL).createObjectURL(res.data);
         window.open(url, '_blank');
       });
     };
 
     $scope.newInvoice = function () {
-      $location.path('/Facturi/Adauga')
-    }
+      $state.go('main.invoice_add');
+    };
   });

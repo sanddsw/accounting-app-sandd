@@ -25,6 +25,6 @@ angular.module('facturiSswApp')
     };
 
     $scope.removeBon = function (index) {
-      console.log("Should delete bon " + index)
-    }
+      console.log("Should delete bon " + index);
+    };
   });

@@ -13,7 +13,9 @@ angular.module('facturiSswApp')
 
     return {
       isLogged: function() {
-        if(angular.isObject(loggedIn)) return true;
+        if(angular.isObject(loggedIn)) {
+          return true;
+        }
 
         loggedIn = $cookies.get('login_data');
         return angular.isObject(loggedIn);
@@ -23,9 +25,11 @@ angular.module('facturiSswApp')
           $request.post('users/login', user).then(function(data) {
             resolve(data);
             loggedIn = data;
-            if(data.success) $cookies.put('login_data', data);
-          })
+            if(data.success) {
+              $cookies.put('login_data', data);
+            }
+          });
         });
       }
-    }
+    };
   }]);
