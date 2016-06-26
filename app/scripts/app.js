@@ -78,6 +78,13 @@ angular
         url: "invoices/add",
         templateUrl: 'views/add_invoice.html',
         controller: 'AddInvoiceController as vm',
+          resolve: {
+              invoices: function ($invoicesService) {
+                  return $invoicesService.list().then(function (result) {
+                      return result.data;
+                  });
+              }
+          }
       });
   }])
 

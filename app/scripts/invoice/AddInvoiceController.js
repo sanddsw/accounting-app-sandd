@@ -8,8 +8,20 @@
  * Controller of the facturiSswApp
  */
 angular.module('facturiSswApp')
-    .controller('AddInvoiceController', function ($invoicesService, $clients, $scope, FoundationApi, ModalFactory, $timeout, $state) {
+    .controller('AddInvoiceController', function ($invoicesService, $clients, $scope, FoundationApi, ModalFactory, $timeout, $state, invoices) {
       var vm = this;
+
+      vm.nextInvoiceNumber = function () {
+        var max = 1;
+        var maxString = "";
+        for (var i=0; i<invoices.length; i++) {
+          if(parseInt(invoices[i].number) > max) {
+            max = parseInt(invoices[i].number);
+            maxString = "0" + (max + 1);
+          }
+        }
+        return maxString;
+      };
 
       function sumOfProducts(products) {
         if (products === undefined) {
@@ -20,14 +32,14 @@ angular.module('facturiSswApp')
           s += products[i].amount;
         }
         return s;
-      }
+      };
 
       vm.f = {
         series: "",
         number: "",
         buyer: "",
         date: "",
-        currency: "RON",
+        currency: "USD",
         seller: {
           name: "SANDD SOFT WORKS SRL",
           cif: "33535396",
@@ -67,6 +79,20 @@ angular.module('facturiSswApp')
         $invoicesService.save(vm.f).then(function() {
           $state.go('main.invoices');
         });
+      };
+
+      vm.invoiceValid = function() {
+        var sameInvoiceFound = false;
+        for (var i=0; i < invoices.length; i++) {
+          var trimmedNumber = parseInt(invoices[i].number);
+          if(invoices[i].series === vm.f.series && trimmedNumber === parseInt(vm.f.number)) {
+
+            sameInvoiceFound = true;
+          }
+        }
+        return vm.f.buyer._id != undefined &&
+            vm.f.products.length > 0 &&
+            !sameInvoiceFound
       };
 
       vm.openClientModal = function (client) {

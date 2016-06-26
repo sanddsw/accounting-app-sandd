@@ -4,6 +4,10 @@
   font-weight: bold;
 }
 
+.ng-invalid.ng-touched {
+  border-color: red !important;
+}
+
 .furnizor-cumparator-block {
   margin-top: 2.5rem;
   font-size: 8px;

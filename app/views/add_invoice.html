@@ -1,4 +1,5 @@
 <div class="small-12 large-8 grid-block vertical large-centered">
+    <form name="invoiceForm" ng-submit="vm.saveFactura()" novalidate>
     <!-- HEADER -->
     <div class="grid-block vertical header">
         <!--Logo-->
@@ -130,7 +131,7 @@
                         <div class="grid-content shrink">
                             <label>
                                 {{"views.invoice.series" | translate}}
-                                <input type="text" placeholder="SSW" ng-model="vm.f.series">
+                                <input type="text" placeholder="SSW" ng-model="vm.f.series" required>
                             </label>
                         </div>
                     </div>
@@ -138,7 +139,7 @@
                         <div class="grid-content shrink">
                             <label>
                                 {{"views.invoice.number" | translate}}
-                                <input type="text" placeholder="001" ng-model="vm.f.number">
+                                <input type="text" placeholder="{{vm.nextInvoiceNumber()}}" ng-model="vm.f.number" required>
                             </label>
                         </div>
                     </div>
@@ -147,7 +148,7 @@
                     <div class="grid-content shrink">
                         <label>
                             {{"views.invoice.date" | translate}}
-                            <input type="date" ng-model="vm.f.date">
+                            <input type="date" ng-model="vm.f.date" required>
                         </label>
                     </div>
                 </div>
@@ -164,8 +165,8 @@
                             <div class="grid-content shrink">{{vm.f.total}}</div>
                             <div class="grid-content small-6">
                                 <select ng-model="vm.f.currency">
-                                    <option value="RON">RON</option>
                                     <option value="USD">USD</option>
+                                    <option value="RON">RON</option>
                                     <option value="EUR">EUR</option>
                                 </select>
                             </div>
@@ -193,7 +194,7 @@
                     <div class="grid-block small-12">
                         <div class="grid-content">
                             <input type="text" ng-model="vm.f.products[$index].title"
-                                   placeholder='{{"views.invoice.productName" | translate}}'/>
+                                   placeholder='{{"views.invoice.productName" | translate}}' required/>
                         </div>
                     </div>
                     <div class="grid-block small-6">
@@ -209,8 +210,8 @@
                         <label>
                             <span class="inline-label" style="margin-top: 0">
                               <input type="number" ng-model="vm.f.products[$index].amount"
-                                     style="text-align: right" placeholder='{{"views.invoice.amount" | translate}}'/>
-                              <span class="form-label">USD</span>
+                                     style="text-align: right" placeholder='{{"views.invoice.amount" | translate}}' required/>
+                              <span class="form-label">{{vm.f.currency}}</span>
                             </span>
                         </label>
                     </div>
@@ -230,6 +231,7 @@
     </div>
 
     <div class="grid-block">
-        <a class="button expand" ng-click="vm.saveFactura()">{{"views.invoice.saveInvoice" | translate}}</a>
+        <button type="submit" ng-disabled="invoiceForm.$invalid || !vm.invoiceValid()" class="button expand">{{"views.invoice.saveInvoice" | translate}}</button>
     </div>
+    </form>
 </div>
